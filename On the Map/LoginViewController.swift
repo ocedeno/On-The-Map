@@ -11,9 +11,18 @@ import UIKit
 class LoginViewController: UIViewController {
     
     
+    //MARK: IBOutlets
+    
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var userEmailAddress: UITextField!
-    var appDelagate = AppDelegate()
+    
+    var userInfoDictionary = [
+        "username" : "",
+        "password" : ""
+    ]
+
+    
+    //MARK: Error Handling
     
     func displayError(title: String, message: String) -> Void {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -22,6 +31,8 @@ class LoginViewController: UIViewController {
         })
         self.present(alert, animated: true, completion: nil)
     }
+    
+    //MARK: IBActions
     
     @IBAction func loginButtonPressed() {
         
@@ -35,33 +46,11 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let url = URL(string: "https://www.udacity.com/api/session")
-        let request = NSMutableURLRequest(url: url!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"udacity\": {\"username\": \"\(userEmailAddress.text!)\", \"password\": \"\(userPassword.text!)\"}}".data(using: String.Encoding.utf8)
+        userInfoDictionary["username"] = userEmailAddress.text
+        userInfoDictionary["password"] = userPassword.text
         
-        let task = appDelagate.sharedSession.dataTask(with: request as URLRequest) { (data, response, error) in
-            guard (error == nil) else {
-                print("An error was discovered.\(error)")
-                return
-            }
-            
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else{
-                print("An unsuccessful response was given.\(response)")
-                return
-            }
-            
-            guard let data = data else {
-                print("There was an error parsing the data.")
-                return
-            }
-            
-            
-        }
         
-        task.resume()
+        
     }
     
     @IBAction func createAccountButton() {
