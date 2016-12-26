@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var userEmailAddress: UITextField!
     
+    //MARK: Variables
+    
     var userInfoDictionary = [
         "username" : "",
         "password" : ""
