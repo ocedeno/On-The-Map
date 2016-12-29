@@ -21,7 +21,10 @@ extension UdacityClient {
     
     //MARK: Parameters
     struct MethodParameters {
-        static var UdacityDictionary : [String:String] = [:]
+        static var UdacityDictionary : [String:String] = [
+            "username" : MethodParameters.Username!,
+            "password" : MethodParameters.UserPassword!
+        ]
         static var Username: String? = ""
         static var UserPassword: String? = ""
     }
@@ -31,6 +34,7 @@ extension UdacityClient {
         static let AppJSON = "application/json"
         static let AcceptHeader = "Accept"
         static let ContentTypeHeader = "Content-Type"
+        static let JSONBody = "{\"udacity\": {\"username\": \"\(MethodParameters.UdacityDictionary["username"]!)\", \"password\": \"\(MethodParameters.UdacityDictionary["password"]!)\"}}"
     }
     
     //MARK: JSONResponseKeys

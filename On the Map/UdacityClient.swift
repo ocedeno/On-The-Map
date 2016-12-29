@@ -42,6 +42,7 @@ class UdacityClient: NSObject {
         request.addValue(UdacityClient.RequestValues.AppJSON, forHTTPHeaderField: UdacityClient.RequestValues.AcceptHeader)
         request.addValue(UdacityClient.RequestValues.AppJSON, forHTTPHeaderField: UdacityClient.RequestValues.ContentTypeHeader)
         request.httpBody = jsonBody.data(using: .utf8)
+        print(jsonBody)
         
         //MARK: Making Request
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -55,13 +56,13 @@ class UdacityClient: NSObject {
             
             //GUARD: Handling Error Return
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+                sendError("There was an error with your request: \(error!)")
                 return
             }
             
             // GUARD: Response Error Check
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+                sendError("Your request returned a status code other than 2xx! \(response!)")
                 return
             }
             
@@ -70,7 +71,7 @@ class UdacityClient: NSObject {
                 sendError("No data was returned by the request!")
                 return
             }
-            
+
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
             
         }
@@ -81,15 +82,25 @@ class UdacityClient: NSObject {
     //Convert JSON Completion Handler
     private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
-        var parsedResult: AnyObject! = nil
+        var parsedResult: AnyObject!
         do {
             parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+            print("Data converting found an error")
         }
-        
+
         completionHandlerForConvertData(parsedResult, nil)
+
+    }
+    
+    //MARK: Shared Instance
+    class func sharedInstance() -> UdacityClient {
+        struct Singleton {
+            static var sharedInstance = UdacityClient()
+        }
+        return Singleton.sharedInstance
     }
     
 }

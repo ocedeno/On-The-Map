@@ -22,8 +22,7 @@ class LoginViewController: UIViewController {
         "username" : "",
         "password" : ""
     ]
-
-    
+   
     //MARK: Error Handling
     
     func displayError(title: String, message: String) -> Void {
@@ -38,6 +37,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed() {
         
+        //Guard: Text Fields are not Empty
         guard !(userEmailAddress.text?.isEmpty)! else {
             displayError(title: "Error", message: "The Password / Email Address field is empty.")
             return
@@ -48,11 +48,15 @@ class LoginViewController: UIViewController {
             return
         }
         
-        userInfoDictionary["username"] = userEmailAddress.text
-        userInfoDictionary["password"] = userPassword.text
+        //Pass along text field  values to Dictionary
+        UdacityClient.MethodParameters.UdacityDictionary["username"] = userEmailAddress.text
+        UdacityClient.MethodParameters.UdacityDictionary["password"] = userPassword.text
         
-        
-        
+        //Call Method to Authorize User
+        UdacityClient.sharedInstance().taskForUdacityAuthentication(UdacityClient.MethodType.Post, parameters: UdacityClient.MethodParameters.UdacityDictionary, jsonBody: UdacityClient.RequestValues.JSONBody) { (response, error) in
+
+        }
+    
     }
     
     @IBAction func createAccountButton() {
