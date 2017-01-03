@@ -41,17 +41,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
-         
-            let userInfoDictionary = result as! [String:AnyObject]
-            let userSessionInfo = userInfoDictionary["session"] as![String:AnyObject]
-            let userAccountInfo = userInfoDictionary["account"] as! [String:AnyObject]
-            let userSessionID = userSessionInfo["id"] as! String
-            let userKeyID = userAccountInfo["key"] as! String
-            print(userSessionID, userKeyID)
-            
-        }
-    
+        UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!)
     }
     
     @IBAction func createAccountButton() {

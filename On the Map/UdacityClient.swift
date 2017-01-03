@@ -19,6 +19,7 @@ class UdacityClient: NSObject {
     
     //authentication state
     var sessionID : String? = nil
+    var keyID : String? = nil
     
     //MARK: Initializers
     
@@ -26,47 +27,44 @@ class UdacityClient: NSObject {
         super.init()
     }
     
+    //MARK: Error Handling
+    func sendError(_ errorMessage: String) {
+        print("\(errorMessage)")
+    }
+    
     //MARK: Task for Session
     
-    func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: AnyObject?, _ error: Error?) -> Void) -> URLSessionDataTask {
+    func taskForSession(request: NSMutableURLRequest) {
      
         //MARK: Starting Session
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
-            //MARK: Error Handling
-            func sendError(_ error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandler(nil, NSError(domain: "taskForUdacityAuthentication", code: 1, userInfo: userInfo))
-            }
-            
             //GUARD: Handling Error Return
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
+                self.sendError("There was an error with your request: \(error!)")
                 return
             }
             
             // GUARD: Response Error Check
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx! \(response!)")
+                self.sendError("Your request returned a status code other than 2xx! \(response!)")
                 return
             }
             
             // GUARD: Data Error Check
             guard let data = data else {
-                sendError("No data was returned by the request!")
+                self.sendError("No data was returned by the request!")
                 return
             }
 
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
+            self.convertDataWithCompletionHandler(data)
             
         }
         task.resume()
-        return task
     }
     
     //Convert JSON Completion Handler
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    private func convertDataWithCompletionHandler(_ data: Data) {
         
         var parsedResult: AnyObject?
         do {
@@ -76,12 +74,15 @@ class UdacityClient: NSObject {
             parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject?
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
-            print("Data converting found an error. \(error)")
+            sendError("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
         }
 
-        completionHandlerForConvertData(parsedResult, nil)
-
+        let userInfoDictionary = parsedResult as! [String:AnyObject]
+        let userAccountInfo = userInfoDictionary["account"] as! [String:AnyObject]
+        keyID = userAccountInfo["key"] as? String
+        print(
+            keyID!)
+        
     }
     
     //MARK: Shared Instance

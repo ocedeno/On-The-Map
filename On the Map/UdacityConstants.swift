@@ -23,12 +23,4 @@ extension UdacityClient {
         static let Id = "id"
         static let Expiration = "expiration"
     }
-    
-    struct JSONResponseValues {
-       
-        //MARK: JSON Returned User Values
-        static var UserKey = ""
-        static var UserSessionID = ""
-    }
-    
 }
