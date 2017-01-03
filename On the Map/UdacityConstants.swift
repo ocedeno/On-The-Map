@@ -8,35 +8,6 @@
 
 extension UdacityClient {
     
-    // MARK: Method Keys
-    struct MethodKeys {
-        static let NewSession = "https://www.udacity.com/api/session"
-    }
-    
-    //MARK: Method Type
-    struct MethodType {
-        static let Post = "POST"
-        static let Delete = "DELETE"
-    }
-    
-    //MARK: Parameters
-    struct MethodParameters {
-        static var UdacityDictionary : [String:String] = [
-            "username" : MethodParameters.Username!,
-            "password" : MethodParameters.UserPassword!
-        ]
-        static var Username: String? = ""
-        static var UserPassword: String? = ""
-    }
-    
-    //MARK: Request Values
-    struct RequestValues {
-        static let AppJSON = "application/json"
-        static let AcceptHeader = "Accept"
-        static let ContentTypeHeader = "Content-Type"
-        static let JSONBody = "{\"udacity\": {\"username\": \"\(MethodParameters.UdacityDictionary["username"]!)\", \"password\": \"\(MethodParameters.UdacityDictionary["password"]!)\"}}"
-    }
-    
     //MARK: JSONResponseKeys
     struct JSONResponseKeys {
         
@@ -51,6 +22,13 @@ extension UdacityClient {
         //MARK: Session
         static let Id = "id"
         static let Expiration = "expiration"
+    }
+    
+    struct JSONResponseValues {
+       
+        //MARK: JSON Returned User Values
+        static var UserKey = ""
+        static var UserSessionID = ""
     }
     
 }

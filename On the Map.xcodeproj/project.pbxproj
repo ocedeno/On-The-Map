@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0662A0471E1C06C40065E1D7 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0662A0461E1C06C40065E1D7 /* UdacityConvenience.swift */; };
 		06B3EAD71E09C3A7004B0567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */; };
 		06B3EAD91E09C3A7004B0567 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAD81E09C3A7004B0567 /* LoginViewController.swift */; };
 		06B3EADC1E09C3A8004B0567 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EADA1E09C3A8004B0567 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0662A0461E1C06C40065E1D7 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		06B3EAD31E09C3A7004B0567 /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06B3EAD81E09C3A7004B0567 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				06FE2B941E09ED64005082BA /* UdacityConstants.swift */,
 				06FE2B961E09ED9A005082BA /* UdacityClient.swift */,
+				0662A0461E1C06C40065E1D7 /* UdacityConvenience.swift */,
 			);
 			name = Udacity;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				06B3EAD91E09C3A7004B0567 /* LoginViewController.swift in Sources */,
 				06B3EAD71E09C3A7004B0567 /* AppDelegate.swift in Sources */,
 				06FE2B951E09ED64005082BA /* UdacityConstants.swift in Sources */,
+				0662A0471E1C06C40065E1D7 /* UdacityConvenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

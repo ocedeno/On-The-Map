@@ -15,13 +15,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var userEmailAddress: UITextField!
-    
-    //MARK: Variables
-    
-    var userInfoDictionary = [
-        "username" : "",
-        "password" : ""
-    ]
    
     //MARK: Error Handling
     
@@ -48,13 +41,15 @@ class LoginViewController: UIViewController {
             return
         }
         
-        //Pass along text field  values to Dictionary
-        UdacityClient.MethodParameters.UdacityDictionary["username"] = userEmailAddress.text
-        UdacityClient.MethodParameters.UdacityDictionary["password"] = userPassword.text
-        
-        //Call Method to Authorize User
-        UdacityClient.sharedInstance().taskForUdacityAuthentication(UdacityClient.MethodType.Post, parameters: UdacityClient.MethodParameters.UdacityDictionary, jsonBody: UdacityClient.RequestValues.JSONBody) { (response, error) in
-
+        UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
+         
+            let userInfoDictionary = result as! [String:AnyObject]
+            let userSessionInfo = userInfoDictionary["session"] as![String:AnyObject]
+            let userAccountInfo = userInfoDictionary["account"] as! [String:AnyObject]
+            let userSessionID = userSessionInfo["id"] as! String
+            let userKeyID = userAccountInfo["key"] as! String
+            print(userSessionID, userKeyID)
+            
         }
     
     }

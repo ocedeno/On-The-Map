@@ -26,32 +26,18 @@ class UdacityClient: NSObject {
         super.init()
     }
     
-    //MARK: POST
+    //MARK: Task for Session
     
-    func taskForUdacityAuthentication(_ method: String, parameters: [String: String], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: AnyObject?, _ error: Error?) -> Void) -> URLSessionDataTask {
      
-        //MARK: Setting Parameters
-        UdacityClient.MethodParameters.Username = parameters["username"]
-        UdacityClient.MethodParameters.UserPassword = parameters["password"]
-        
-        //MARK: Building URL, Configuring Request
-        let url = URL(string: UdacityClient.MethodKeys.NewSession)!
-        
-        let request = NSMutableURLRequest(url: url)
-        request.httpMethod = method
-        request.addValue(UdacityClient.RequestValues.AppJSON, forHTTPHeaderField: UdacityClient.RequestValues.AcceptHeader)
-        request.addValue(UdacityClient.RequestValues.AppJSON, forHTTPHeaderField: UdacityClient.RequestValues.ContentTypeHeader)
-        request.httpBody = jsonBody.data(using: .utf8)
-        print(jsonBody)
-        
-        //MARK: Making Request
+        //MARK: Starting Session
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
             //MARK: Error Handling
             func sendError(_ error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForPOST(nil, NSError(domain: "taskForUdacityAuthentication", code: 1, userInfo: userInfo))
+                completionHandler(nil, NSError(domain: "taskForUdacityAuthentication", code: 1, userInfo: userInfo))
             }
             
             //GUARD: Handling Error Return
@@ -72,7 +58,7 @@ class UdacityClient: NSObject {
                 return
             }
 
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
             
         }
         task.resume()
@@ -82,13 +68,16 @@ class UdacityClient: NSObject {
     //Convert JSON Completion Handler
     private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
-        var parsedResult: AnyObject!
+        var parsedResult: AnyObject?
         do {
-            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+            
+            let range = Range(uncheckedBounds: (5, data.count))
+            let newData = data.subdata(in: range)
+            parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject?
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
-            print("Data converting found an error")
+            print("Data converting found an error. \(error)")
         }
 
         completionHandlerForConvertData(parsedResult, nil)
