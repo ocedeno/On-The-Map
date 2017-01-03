@@ -72,7 +72,7 @@ class UdacityClient: NSObject {
             let range = Range(uncheckedBounds: (5, data.count))
             let newData = data.subdata(in: range)
             parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject?
-        } catch {
+        } catch { 
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             sendError("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
         }
