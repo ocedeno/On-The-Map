@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed() {
         
-        //Guard: Text Fields are not Empty
+        //MARK: Guard Text Fields are not Empty
         guard !(userEmailAddress.text?.isEmpty)! else {
             displayError(title: "Error", message: "The Password / Email Address field is empty.")
             return
@@ -41,7 +41,13 @@ class LoginViewController: UIViewController {
             return
         }
         
-        UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!)
+        //MARK: Run Udacity Authentication
+        UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
+            
+            let userAccountInfo = result?["account"] as! [String:AnyObject]
+            let userKeyID = userAccountInfo["key"] as? String
+            print("This is your User Key ID: \(userKeyID!)")
+        }
     }
     
     @IBAction func createAccountButton() {

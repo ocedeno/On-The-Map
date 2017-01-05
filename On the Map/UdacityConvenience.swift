@@ -10,7 +10,7 @@ import Foundation
 extension UdacityClient {
 
     //MARK: Building Request for Udacity Authorization
-    func udacityAuthenticationRequest(username: String, password: String) {
+    func udacityAuthenticationRequest(username: String, password: String, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
         request.httpMethod = "POST"
@@ -18,11 +18,11 @@ extension UdacityClient {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = "{\"udacity\":{\"username\":\"\(username)\",\"password\":\"\(password)\"}}".data(using: String.Encoding.utf8)
                 
-        taskForSession(request: request)
+        taskForSession(request: request, completionHandler: completionHandler)
     }
     
     //MARK: Building Request for Udacity Logout
-    func udacityLogoutRequest() {
+    func udacityLogoutRequest(completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
         request.httpMethod = "DELETE"
@@ -35,7 +35,14 @@ extension UdacityClient {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
         
-        taskForSession(request: request)
+        taskForSession(request: request, completionHandler: completionHandler)
     
+    }
+    
+    func getUdacityUserData (userKeyID: String, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
+        
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/users/\(userKeyID)")!)
+        taskForSession(request: request, completionHandler: completionHandler)
+
     }
 }

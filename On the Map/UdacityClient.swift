@@ -16,10 +16,7 @@ class UdacityClient: NSObject {
     
     //shared session
     var session = URLSession.shared
-    
-    //authentication state
-    var sessionID : String? = nil
-    var keyID : String? = nil
+
     
     //MARK: Initializers
     
@@ -34,7 +31,7 @@ class UdacityClient: NSObject {
     
     //MARK: Task for Session
     
-    func taskForSession(request: NSMutableURLRequest) {
+    func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
      
         //MARK: Starting Session
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -57,14 +54,14 @@ class UdacityClient: NSObject {
                 return
             }
 
-            self.convertDataWithCompletionHandler(data)
+            self.convertDataWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
         task.resume()
     }
     
     //Convert JSON Completion Handler
-    private func convertDataWithCompletionHandler(_ data: Data) {
+    private func convertDataWithCompletionHandler(_ data: Data, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
         var parsedResult: AnyObject?
         do {
@@ -72,16 +69,14 @@ class UdacityClient: NSObject {
             let range = Range(uncheckedBounds: (5, data.count))
             let newData = data.subdata(in: range)
             parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject?
-        } catch { 
+        } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             sendError("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
         }
-
+        
         let userInfoDictionary = parsedResult as! [String:AnyObject]
-        let userAccountInfo = userInfoDictionary["account"] as! [String:AnyObject]
-        keyID = userAccountInfo["key"] as? String
-        print(
-            keyID!)
+        
+        completionHandler(userInfoDictionary, nil)
         
     }
     
