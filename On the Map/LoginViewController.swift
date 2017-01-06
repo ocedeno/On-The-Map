@@ -44,9 +44,22 @@ class LoginViewController: UIViewController {
         //MARK: Run Udacity Authentication
         UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
             
-            let userAccountInfo = result?["account"] as! [String:AnyObject]
-            let userKeyID = userAccountInfo["key"] as? String
-            print("This is your User Key ID: \(userKeyID!)")
+            guard let userAccountInfo = result?["account"] as! [String:AnyObject]? else {
+                self.displayError(title: "Login Error", message: "There was an error in logging in. Please try again later.")
+                return
+            }
+            
+            guard let userKeyID = userAccountInfo["key"] as? String else {
+                self.displayError(title: "Login Error", message: "There was an error in logging in. Please try again later.")
+                return
+            }
+            
+            UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID, completionHandler: { (result, error) in
+                
+                ParseClient.sharedInstance().getSpecificStudentLocation(userKeyID: userKeyID, completionHandler: { (result, error) in
+                    print(result!)
+                })
+            })
         }
     }
     

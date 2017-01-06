@@ -1,34 +1,27 @@
 //
-//  UdacityClients.swift
+//  ParseClient.swift
 //  On the Map
 //
-//  Created by Octavio Cedeno on 12/20/16.
-//  Copyright © 2016 Octavio Cedeno. All rights reserved.
+//  Created by Octavio Cedeno on 1/5/17.
+//  Copyright © 2017 Octavio Cedeno. All rights reserved.
 //
 
 import Foundation
 
-// MARK: - UdacityClient: NSObject
-
-class UdacityClient: NSObject {
-    
-    //MARK: Initializers
-    
-    override init() {
-        super.init()
-    }
+class ParseClient {
     
     var appDelegate = AppDelegate()
     
     //MARK: Error Handling
+    
     func sendError(_ errorMessage: String) {
         print("\(errorMessage)")
     }
-    
+
     //MARK: Task for Session
     
     func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
-     
+        
         //MARK: Starting Session
         let task = appDelegate.session.dataTask(with: request as URLRequest) { (data, response, error) in
             
@@ -49,7 +42,7 @@ class UdacityClient: NSObject {
                 self.sendError("No data was returned by the request!")
                 return
             }
-
+            
             self.convertDataWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
@@ -61,10 +54,7 @@ class UdacityClient: NSObject {
         
         var parsedResult: AnyObject?
         do {
-            
-            let range = Range(uncheckedBounds: (5, data.count))
-            let newData = data.subdata(in: range)
-            parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject?
+            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject?
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             sendError("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
@@ -76,12 +66,29 @@ class UdacityClient: NSObject {
         
     }
     
+    
     //MARK: Shared Instance
-    class func sharedInstance() -> UdacityClient {
+    class func sharedInstance() -> ParseClient {
         struct Singleton {
-            static var sharedInstance = UdacityClient()
+            static var sharedInstance = ParseClient()
         }
         return Singleton.sharedInstance
+    }
+    
+    func escapedParameters (_ parameters: [String:String]) -> URL {
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "parse.udacity.com"
+        components.path = "/parse/classes/StudentLocation"
+        components.queryItems = [URLQueryItem]()
+        
+        for (key, value) in parameters {
+            let queryItem = URLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+        
+        return components.url!
     }
     
 }

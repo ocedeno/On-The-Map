@@ -17,6 +17,9 @@
 		06B3EAF71E09C3A8004B0567 /* On_the_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAF61E09C3A8004B0567 /* On_the_MapUITests.swift */; };
 		06B3EB121E09CE9E004B0567 /* on the map assets in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EB111E09CE9E004B0567 /* on the map assets */; };
 		06EFCFE51E13F7E400EEE0FE /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFCFE41E13F7E400EEE0FE /* ErrorHandling.swift */; };
+		06F52A3E1E1F19CA00D314F6 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */; };
+		06F52A421E2013FC00D314F6 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A411E2013FC00D314F6 /* ParseConstants.swift */; };
+		06F52A441E20294500D314F6 /* ParseConveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A431E20294500D314F6 /* ParseConveniences.swift */; };
 		06FE2B951E09ED64005082BA /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FE2B941E09ED64005082BA /* UdacityConstants.swift */; };
 		06FE2B971E09ED9A005082BA /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FE2B961E09ED9A005082BA /* UdacityClient.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +58,9 @@
 		06B3EAF81E09C3A8004B0567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06B3EB111E09CE9E004B0567 /* on the map assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "on the map assets"; sourceTree = "<group>"; };
 		06EFCFE41E13F7E400EEE0FE /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		06F52A411E2013FC00D314F6 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		06F52A431E20294500D314F6 /* ParseConveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConveniences.swift; sourceTree = "<group>"; };
 		06FE2B941E09ED64005082BA /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		06FE2B961E09ED9A005082BA /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +118,6 @@
 				06B3EB071E09C495004B0567 /* Model */,
 				06B3EB081E09C49B004B0567 /* View */,
 				06B3EB061E09C470004B0567 /* Controller */,
-				06B3EB051E09C443004B0567 /* Assets */,
 				06B3EB041E09C42C004B0567 /* Supporting Files */,
 			);
 			path = "On the Map";
@@ -139,6 +144,7 @@
 		06B3EB041E09C42C004B0567 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06B3EB051E09C443004B0567 /* Assets */,
 				06B3EAE21E09C3A8004B0567 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -208,6 +214,9 @@
 		06FE2B981E09EE00005082BA /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */,
+				06F52A431E20294500D314F6 /* ParseConveniences.swift */,
+				06F52A411E2013FC00D314F6 /* ParseConstants.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -356,6 +365,9 @@
 				06B3EAD71E09C3A7004B0567 /* AppDelegate.swift in Sources */,
 				06FE2B951E09ED64005082BA /* UdacityConstants.swift in Sources */,
 				0662A0471E1C06C40065E1D7 /* UdacityConvenience.swift in Sources */,
+				06F52A3E1E1F19CA00D314F6 /* ParseClient.swift in Sources */,
+				06F52A441E20294500D314F6 /* ParseConveniences.swift in Sources */,
+				06F52A421E2013FC00D314F6 /* ParseConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
