@@ -10,9 +10,14 @@ import Foundation
 extension ParseClient {
     
     //MARK: Convenience Methods
-    func getStudentLocations (limit: Int, skip: Int, order: String, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
+    func getStudentLocations (limit: Int, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
-        let request = NSMutableURLRequest(url: URL(string:ParseRequest.baseURLSecured)!)
+        let parameters = [
+            "limit" : "\(limit)",
+            "order" : "-updatedAt"
+        ]
+        let url = escapedParameters(parameters)
+        let request = NSMutableURLRequest(url: url)
         request.addValue(ParseConstants.parseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(ParseConstants.parseRestApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
@@ -39,6 +44,6 @@ extension ParseClient {
         request.addValue(ParseConstants.parseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(ParseConstants.parseRestApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.httpBody = "{\"uniqueKey\": \"\(userKeyID)\", \"firstName\": \"\(firstNAme)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}".data(using: String.Encoding.utf8)
+        //request.httpBody = "{\"uniqueKey\": \"\(uniqueKey)\", \"firstName\": \"\(firstNAme)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": 37.386052, \"longitude\": -122.083851}".data(using: String.Encoding.utf8)
     }
 }

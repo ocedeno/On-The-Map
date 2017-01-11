@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
-    
+
     
     //MARK: IBOutlets
     
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var userEmailAddress: UITextField!
+    
+    //MARK: Creating FB Button
+    
+    override func viewDidLoad() {
+        let loginButton = FBSDKLoginButton()
+        let bottomLayoutCenter = CGPoint(x: 187, y: 600)
+        loginButton.center = bottomLayoutCenter
+        
+        view.addSubview(loginButton)
+    }
+    
+    
    
     //MARK: Error Handling
     
@@ -56,7 +69,7 @@ class LoginViewController: UIViewController {
             
             UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID, completionHandler: { (result, error) in
                 
-                ParseClient.sharedInstance().getSpecificStudentLocation(userKeyID: userKeyID, completionHandler: { (result, error) in
+                ParseClient.sharedInstance().getStudentLocations(limit: 100, completionHandler: { (result, error) in
                     print(result!)
                 })
             })

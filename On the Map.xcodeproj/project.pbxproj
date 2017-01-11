@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06020C031E25D3B2009A035B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C021E25D3B2009A035B /* Bolts.framework */; };
+		06020C071E25D411009A035B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C041E25D411009A035B /* FBSDKCoreKit.framework */; };
+		06020C081E25D411009A035B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C051E25D411009A035B /* FBSDKLoginKit.framework */; };
 		0662A0471E1C06C40065E1D7 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0662A0461E1C06C40065E1D7 /* UdacityConvenience.swift */; };
 		06B3EAD71E09C3A7004B0567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */; };
 		06B3EAD91E09C3A7004B0567 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAD81E09C3A7004B0567 /* LoginViewController.swift */; };
@@ -16,7 +19,6 @@
 		06B3EAEC1E09C3A8004B0567 /* On_the_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAEB1E09C3A8004B0567 /* On_the_MapTests.swift */; };
 		06B3EAF71E09C3A8004B0567 /* On_the_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAF61E09C3A8004B0567 /* On_the_MapUITests.swift */; };
 		06B3EB121E09CE9E004B0567 /* on the map assets in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EB111E09CE9E004B0567 /* on the map assets */; };
-		06EFCFE51E13F7E400EEE0FE /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFCFE41E13F7E400EEE0FE /* ErrorHandling.swift */; };
 		06F52A3E1E1F19CA00D314F6 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */; };
 		06F52A421E2013FC00D314F6 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A411E2013FC00D314F6 /* ParseConstants.swift */; };
 		06F52A441E20294500D314F6 /* ParseConveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A431E20294500D314F6 /* ParseConveniences.swift */; };
@@ -42,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06020C021E25D3B2009A035B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
+		06020C041E25D411009A035B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		06020C051E25D411009A035B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0662A0461E1C06C40065E1D7 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		06B3EAD31E09C3A7004B0567 /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +62,6 @@
 		06B3EAF61E09C3A8004B0567 /* On_the_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_the_MapUITests.swift; sourceTree = "<group>"; };
 		06B3EAF81E09C3A8004B0567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06B3EB111E09CE9E004B0567 /* on the map assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "on the map assets"; sourceTree = "<group>"; };
-		06EFCFE41E13F7E400EEE0FE /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		06F52A411E2013FC00D314F6 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		06F52A431E20294500D314F6 /* ParseConveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConveniences.swift; sourceTree = "<group>"; };
@@ -70,6 +74,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06020C071E25D411009A035B /* FBSDKCoreKit.framework in Frameworks */,
+				06020C081E25D411009A035B /* FBSDKLoginKit.framework in Frameworks */,
+				06020C031E25D3B2009A035B /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +104,7 @@
 				06B3EAEA1E09C3A8004B0567 /* On the MapTests */,
 				06B3EAF51E09C3A8004B0567 /* On the MapUITests */,
 				06B3EAD41E09C3A7004B0567 /* Products */,
+				06EF0A841E2072080061E3B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */,
-				06EFCFE41E13F7E400EEE0FE /* ErrorHandling.swift */,
 				06B3EB071E09C495004B0567 /* Model */,
 				06B3EB081E09C49B004B0567 /* View */,
 				06B3EB061E09C470004B0567 /* Controller */,
@@ -184,6 +191,16 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		06EF0A841E2072080061E3B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06020C041E25D411009A035B /* FBSDKCoreKit.framework */,
+				06020C051E25D411009A035B /* FBSDKLoginKit.framework */,
+				06020C021E25D3B2009A035B /* Bolts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		06FE2B911E09ED01005082BA /* Clients */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +248,7 @@
 				06B3EACF1E09C3A7004B0567 /* Sources */,
 				06B3EAD01E09C3A7004B0567 /* Frameworks */,
 				06B3EAD11E09C3A7004B0567 /* Resources */,
+				06020C0C1E25D4EE009A035B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -354,12 +372,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06020C0C1E25D4EE009A035B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		06B3EACF1E09C3A7004B0567 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06EFCFE51E13F7E400EEE0FE /* ErrorHandling.swift in Sources */,
 				06FE2B971E09ED9A005082BA /* UdacityClient.swift in Sources */,
 				06B3EAD91E09C3A7004B0567 /* LoginViewController.swift in Sources */,
 				06B3EAD71E09C3A7004B0567 /* AppDelegate.swift in Sources */,
@@ -518,6 +554,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HC236JEG46;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cedeno-Enterprises-Inc.On-the-Map";
@@ -531,6 +571,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HC236JEG46;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cedeno-Enterprises-Inc.On-the-Map";
