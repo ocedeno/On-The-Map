@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     
     //MARK: IBOutlets
@@ -20,18 +21,36 @@ class LoginViewController: UIViewController {
     //MARK: Creating FB Button
 
     override func viewDidLoad() {
+        
+        guard (FBSDKAccessToken.current()) != nil else {
+            print("No Access Token")
+            return
+        }
+
         let loginButton = FBSDKLoginButton()
+        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        
         let bottomLayoutCenter = CGPoint(x: 187, y: 600)
         loginButton.center = bottomLayoutCenter
         
-        view.addSubview(loginButton)
+        loginButton.delegate = self
         
-//        guard let accessToken = FBSDKAccessToken.current() else {
-//            print("No Access Token")
-//            return
-//        }
+        self.view.addSubview(loginButton)
+        
     }
-   
+    
+    //MARK: Facebook Login/Logout Methods
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+        
+    }
+    
+    
     //MARK: Error Handling
     
     func displayError(title: String, message: String) -> Void {
