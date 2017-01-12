@@ -18,16 +18,19 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userEmailAddress: UITextField!
     
     //MARK: Creating FB Button
-    
+
     override func viewDidLoad() {
         let loginButton = FBSDKLoginButton()
         let bottomLayoutCenter = CGPoint(x: 187, y: 600)
         loginButton.center = bottomLayoutCenter
         
         view.addSubview(loginButton)
+        
+//        guard let accessToken = FBSDKAccessToken.current() else {
+//            print("No Access Token")
+//            return
+//        }
     }
-    
-    
    
     //MARK: Error Handling
     
