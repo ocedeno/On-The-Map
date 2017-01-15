@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -146,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emL-vP-t1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450" y="386"/>
+            <point key="canvasLocation" x="1693" y="373"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bRS-c4-cWC">
@@ -179,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dc-eF-HpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450" y="-453"/>
+            <point key="canvasLocation" x="1693" y="-466"/>
         </scene>
         <!--On the Map-->
         <scene sceneID="P5N-11-nT4">
@@ -193,6 +194,10 @@
                                 <state key="normal" title="Logout"/>
                             </button>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" systemItem="refresh" id="ILC-5j-mce"/>
+                            <barButtonItem image="pin" style="plain" id="b92-DV-4YV"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="wdT-oJ-XiG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -212,6 +217,7 @@
     <resources>
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
+        <image name="pin" width="32" height="32"/>
         <image name="udacityLogoBlue" width="900" height="900"/>
     </resources>
 </document>

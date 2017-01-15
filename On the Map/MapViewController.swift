@@ -13,14 +13,18 @@ import CoreLocation
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    var locationManager = CLLocationManager()
     
     let mapClient = MapClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.mapClient.updateCurrentLocation(mapView: mapView
-        )
+        
+        locationManager.delegate = self
+        self.mapClient.updateCurrentLocation(locationManager: locationManager, mapView: mapView)
     }
+    
+    
+    
 
 }
