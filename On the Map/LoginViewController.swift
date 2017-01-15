@@ -106,7 +106,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func createAccountButton() {
         
-        
-        
+        UIApplication.shared.open(URL(string: "https://www.udacity.com/account/auth#!/signup")!)
     }
 }
