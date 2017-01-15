@@ -1,0 +1,30 @@
+//
+//  TabBarViewController.swift
+//  On the Map
+//
+//  Created by Octavio Cedeno on 1/15/17.
+//  Copyright © 2017 Octavio Cedeno. All rights reserved.
+//
+
+import UIKit
+
+class TabBarViewController: UITabBarController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
+        
+    }
+
+    @IBAction func placeUsersLocation(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
+        
+    }
+    
+}

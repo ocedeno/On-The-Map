@@ -28,7 +28,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         ParseClient.sharedInstance().getStudentLocations(limit: 100) {(result, error) in
             
-            print(result)
         }
     }
     

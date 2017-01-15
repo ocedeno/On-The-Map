@@ -118,6 +118,8 @@
         <scene sceneID="SXU-hZ-V4j">
             <objects>
                 <navigationController storyboardIdentifier="ManagerNavigationController" id="U9F-CV-6Pq" userLabel="ManagerNavigationController" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="736"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="J8f-Km-Cu7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -182,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="1693" y="-466"/>
         </scene>
-        <!--On the Map-->
+        <!--TabBarViewController-->
         <scene sceneID="P5N-11-nT4">
             <objects>
-                <tabBarController id="Klt-F4-GE9" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="Klt-F4-GE9" userLabel="TabBarViewController" customClass="TabBarViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On the Map" id="qbg-v1-uv4">
                         <barButtonItem key="leftBarButtonItem" id="Uin-SK-PPk">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="diM-74-4xT">
@@ -193,10 +195,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Logout"/>
                             </button>
+                            <connections>
+                                <action selector="logoutPressed:" destination="Klt-F4-GE9" id="fXQ-m5-jLi"/>
+                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="refresh" id="ILC-5j-mce"/>
-                            <barButtonItem image="pin" style="plain" id="b92-DV-4YV"/>
+                            <barButtonItem systemItem="refresh" id="ILC-5j-mce">
+                                <connections>
+                                    <action selector="refreshUsersData:" destination="Klt-F4-GE9" id="sUn-eg-7D7"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="b92-DV-4YV">
+                                <connections>
+                                    <action selector="placeUsersLocation:" destination="Klt-F4-GE9" id="0Sb-JK-6P6"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="wdT-oJ-XiG">
