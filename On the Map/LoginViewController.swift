@@ -12,6 +12,8 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    let mainNavController = "ManagerNavigationController"
+    let loginViewController = "LoginViewController"
     
     //MARK: IBOutlets
     
@@ -22,16 +24,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         
-        guard (FBSDKAccessToken.current()) != nil else {
-            print("No Access Token")
+        guard (FBSDKAccessToken.current()) == nil else {
+            navigateToViewController(viewcontroller: mainNavController)
             return
         }
 
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         
-        let bottomLayoutCenter = CGPoint(x: 187, y: 600)
-        loginButton.center = bottomLayoutCenter
+        loginButton.center = view.center
         
         loginButton.delegate = self
         
@@ -39,15 +40,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
+    //MARK: Navigate to View Controller
+    func navigateToViewController(viewcontroller: String) {
+        DispatchQueue.main.async {
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: viewcontroller) as! UINavigationController
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
     //MARK: Facebook Login/Logout Methods
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        
+        //segue into a new view
+        navigateToViewController(viewcontroller: mainNavController)
         
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        
-        
+        //segue back LoginViewController
+        navigateToViewController(viewcontroller: loginViewController)
     }
     
     
@@ -89,16 +99,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             
-            UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID, completionHandler: { (result, error) in
-                
-                ParseClient.sharedInstance().getStudentLocations(limit: 100, completionHandler: { (result, error) in
-                    print(result!)
-                })
-            })
+            self.navigateToViewController(viewcontroller: self.mainNavController)
+            print(userKeyID)
         }
     }
     
     @IBAction func createAccountButton() {
+        
+        
         
     }
 }
