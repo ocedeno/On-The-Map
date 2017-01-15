@@ -36,7 +36,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.delegate = self
         self.view.addSubview(loginButton)
         
-        
     }
     
     //MARK: Navigate to View Controller

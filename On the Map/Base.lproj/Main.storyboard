@@ -117,7 +117,7 @@
         <scene sceneID="SXU-hZ-V4j">
             <objects>
                 <navigationController storyboardIdentifier="ManagerNavigationController" id="U9F-CV-6Pq" userLabel="ManagerNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8f-Km-Cu7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="J8f-Km-Cu7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -129,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="109" y="-47"/>
         </scene>
-        <!--List-->
+        <!--Locations List View Controller-->
         <scene sceneID="1HZ-1I-edy">
             <objects>
-                <viewController id="w8k-aO-55p" customClass="LocationListViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationsListViewController" id="w8k-aO-55p" userLabel="Locations List View Controller" customClass="LocationListViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kXg-jE-7gP"/>
                         <viewControllerLayoutGuide type="bottom" id="3Cp-AU-cz8"/>
@@ -148,10 +148,10 @@
             </objects>
             <point key="canvasLocation" x="1450" y="386"/>
         </scene>
-        <!--Map-->
+        <!--Map View Controller-->
         <scene sceneID="bRS-c4-cWC">
             <objects>
-                <viewController id="l7d-JE-07Y" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="l7d-JE-07Y" userLabel="Map View Controller" customClass="MapViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eGA-dD-Fb6"/>
                         <viewControllerLayoutGuide type="bottom" id="fEM-S9-ODu"/>
@@ -173,6 +173,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="GPR-12-wff"/>
+                    <connections>
+                        <outlet property="mapView" destination="p8P-St-7xc" id="zc5-ar-6bf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dc-eF-HpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
