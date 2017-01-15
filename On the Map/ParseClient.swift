@@ -75,6 +75,7 @@ class ParseClient {
         return Singleton.sharedInstance
     }
     
+    //MARK: Escaping ASCII Characters 
     func escapedParameters (_ parameters: [String:String]) -> URL {
         
         var components = URLComponents()

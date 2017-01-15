@@ -10,6 +10,8 @@ import Foundation
 extension ParseClient {
     
     //MARK: Convenience Methods
+    
+    //Get Multiple Student Locations
     func getStudentLocations (limit: Int, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
         let parameters = [
@@ -24,6 +26,7 @@ extension ParseClient {
         ParseClient.sharedInstance().taskForSession(request: request, completionHandler: completionHandler)
     }
     
+    //get Specific Student Location
     func getSpecificStudentLocation (userKeyID: String, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
         let parameters = [
@@ -37,6 +40,7 @@ extension ParseClient {
         ParseClient.sharedInstance().taskForSession(request: request, completionHandler: completionHandler)
     }
     
+    //post User's Location
     func postStudentLocation (userKeyID: String, firstName: String, lastName: String, mapString: String){
         
         let request = NSMutableURLRequest(url: URL(string: ParseRequest.baseURLSecured)!)

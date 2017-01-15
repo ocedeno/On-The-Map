@@ -12,18 +12,25 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
+    //MARK: IBOutlets
     @IBOutlet weak var mapView: MKMapView!
-    var locationManager = CLLocationManager()
     
+    //MARK: Variable/Constants Declarations
+    var locationManager = CLLocationManager()
     let mapClient = MapClient()
+    let parseClient = ParseClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
         self.mapClient.updateCurrentLocation(locationManager: locationManager, mapView: mapView)
+        
+        ParseClient.sharedInstance().getStudentLocations(limit: 100) {(result, error) in
+            
+            print(result)
+        }
     }
-    
     
     
 
