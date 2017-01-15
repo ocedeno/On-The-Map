@@ -31,12 +31,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        
-        loginButton.center = view.center
-        
+        let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 70)
+        loginButton.center = newCenter
         loginButton.delegate = self
-        
         self.view.addSubview(loginButton)
+        
         
     }
     
