@@ -194,10 +194,10 @@
                                 <rect key="frame" x="20" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutPressed" destination="Klt-F4-GE9" eventType="touchUpInside" id="qTc-xH-gle"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="logoutPressed:" destination="Klt-F4-GE9" id="fXQ-m5-jLi"/>
-                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="ILC-5j-mce">

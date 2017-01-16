@@ -15,8 +15,12 @@ class TabBarViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
-    @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
-        
+    
+    @IBAction func logoutPressed() {
+        DispatchQueue.main.async {
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
+            self.present(controller, animated: true, completion: nil)
+        }
     }
 
     @IBAction func placeUsersLocation(_ sender: UIBarButtonItem) {

@@ -12,8 +12,10 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+
     let mainNavController = "ManagerNavigationController"
     let loginViewController = "LoginViewController"
+    let loginButton = FBSDKLoginButton()
     
     //MARK: IBOutlets
     
@@ -23,13 +25,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     //MARK: Creating FB Button
 
     override func viewDidLoad() {
-        
-        guard (FBSDKAccessToken.current()) == nil else {
-            navigateToViewController(viewcontroller: mainNavController)
-            return
-        }
 
-        let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 70)
         loginButton.center = newCenter
@@ -41,7 +37,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     //MARK: Navigate to View Controller
     func navigateToViewController(viewcontroller: String) {
         DispatchQueue.main.async {
-            let controller = self.storyboard!.instantiateViewController(withIdentifier: viewcontroller) as! UINavigationController
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: viewcontroller)
             self.present(controller, animated: true, completion: nil)
         }
     }
@@ -54,10 +50,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        //segue back LoginViewController
+        
         navigateToViewController(viewcontroller: loginViewController)
+        
     }
-    
     
     //MARK: Error Handling
     
@@ -105,5 +101,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBAction func createAccountButton() {
         
         UIApplication.shared.open(URL(string: "https://www.udacity.com/account/auth#!/signup")!)
+    }
+    
+    //MARK: Shared Instance
+    class func sharedInstance() -> LoginViewController {
+        struct Singleton {
+            static var sharedInstance = LoginViewController()
+        }
+        return Singleton.sharedInstance
     }
 }
