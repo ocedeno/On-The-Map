@@ -23,7 +23,7 @@ class TabBarViewController: UITabBarController {
         }
     }
 
-    @IBAction func placeUsersLocation(_ sender: UIBarButtonItem) {
+    @IBAction func placeUserLocation(_ sender: UIBarButtonItem) {
         
     }
     

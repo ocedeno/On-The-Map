@@ -33,4 +33,15 @@ class MapClient {
         }
     }
     
+    func updateStudentLocations(mapView: MKMapView, result:[String:AnyObject]) {
+        
+        for i in result {
+            let annotation = MKPointAnnotation()
+            annotation.title = i["firstName"] as? String
+            annotation.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! Double, longitude: location["longitude"] as! Double)
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+    
 }

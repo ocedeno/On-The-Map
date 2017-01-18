@@ -28,6 +28,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         ParseClient.sharedInstance().getStudentLocations(limit: 100) {(result, error) in
             
+            for i in result! {
+                let annotation = MKPointAnnotation()
+                annotation.title = i["firstName"] as? String
+                annotation.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! Double, longitude: location["longitude"] as! Double)
+                mapView.addAnnotation(annotation)
+            }
+            
         }
     }
     

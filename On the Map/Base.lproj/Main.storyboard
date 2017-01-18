@@ -189,25 +189,20 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarViewController" id="Klt-F4-GE9" userLabel="TabBarViewController" customClass="TabBarViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On the Map" id="qbg-v1-uv4">
-                        <barButtonItem key="leftBarButtonItem" id="Uin-SK-PPk">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="diM-74-4xT">
-                                <rect key="frame" x="20" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutPressed" destination="Klt-F4-GE9" eventType="touchUpInside" id="qTc-xH-gle"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="s0O-Cn-NFE">
+                            <connections>
+                                <action selector="logoutPressed" destination="Klt-F4-GE9" id="pht-zt-cOr"/>
+                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="ILC-5j-mce">
                                 <connections>
-                                    <action selector="refreshUsersData:" destination="Klt-F4-GE9" id="sUn-eg-7D7"/>
+                                    <action selector="refreshUsersData:" destination="Klt-F4-GE9" id="tI1-fb-x2o"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="pin" id="b92-DV-4YV">
+                            <barButtonItem image="pin" id="b92-DV-4YV" userLabel="PinUserLocation">
                                 <connections>
-                                    <action selector="placeUsersLocation:" destination="Klt-F4-GE9" id="0Sb-JK-6P6"/>
+                                    <action selector="placeUserLocation:" destination="Klt-F4-GE9" id="qd7-Az-srG"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
