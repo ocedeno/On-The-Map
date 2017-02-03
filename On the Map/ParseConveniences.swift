@@ -12,7 +12,7 @@ extension ParseClient {
     //MARK: Convenience Methods
     
     //Get Multiple Student Locations
-    func getStudentLocations (limit: Int, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
+    func getStudentLocations (limit: Int, completionHandler: @escaping (_ result: [[String: AnyObject]]?, _ error: NSError?) -> Void) {
         
         let parameters = [
             "limit" : "\(limit)",
@@ -27,7 +27,7 @@ extension ParseClient {
     }
     
     //get Specific Student Location
-    func getSpecificStudentLocation (userKeyID: String, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
+    func getSpecificStudentLocation (userKeyID: String, completionHandler: @escaping (_ result: [[String: AnyObject]]?, _ error: NSError?) -> Void) {
         
         let parameters = [
             "where" : "{\"uniqueKey\" : \"\(userKeyID)\"}"

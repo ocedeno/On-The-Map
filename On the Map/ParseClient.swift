@@ -11,6 +11,7 @@ import Foundation
 class ParseClient {
     
     var appDelegate = AppDelegate()
+    var loginVC = LoginViewController()
     
     //MARK: Error Handling
     
@@ -20,7 +21,7 @@ class ParseClient {
 
     //MARK: Task for Session
     
-    func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
+    func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: [[String: AnyObject]]?, _ error: NSError?) -> Void) {
         
         //MARK: Starting Session
         let task = appDelegate.session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -31,9 +32,12 @@ class ParseClient {
                 return
             }
             
-            // GUARD: Response Error Check
+            // GUARD: Response Error Check (Login Verified)
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+               
+                ErrorReporting.showMessage(title: "Login Failed", msg: "You have used incorrect credentials to sign in. Try again.")
                 self.sendError("Your request returned a status code other than 2xx! \(response!)")
+                
                 return
             }
             
@@ -50,7 +54,7 @@ class ParseClient {
     }
     
     //Convert JSON Completion Handler
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
+    private func convertDataWithCompletionHandler(_ data: Data, completionHandler: @escaping (_ result: [[String: AnyObject]]?, _ error: NSError?) -> Void) {
         
         var parsedResult: AnyObject?
         do {
@@ -60,9 +64,10 @@ class ParseClient {
             sendError("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
         }
         
-        let userInfoDictionary = parsedResult as! [String:AnyObject]
+        let result = parsedResult as! [String:AnyObject]
+        let arrayOfUserDic = result["results"]
         
-        completionHandler(userInfoDictionary, nil)
+        completionHandler(arrayOfUserDic as! [[String : AnyObject]]?, nil)
         
     }
     

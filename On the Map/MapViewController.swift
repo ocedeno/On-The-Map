@@ -28,7 +28,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         ParseClient.sharedInstance().getStudentLocations(limit: 100) {(result, error) in
             
-            self.mapClient.updateStudentLocations(mapView: self.mapView, result: (result?["results"] as? [[String:AnyObject]])!)
+            self.mapClient.updateStudentLocations(mapView: self.mapView, result: result!)
             
         }
     }

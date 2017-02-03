@@ -11,8 +11,9 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
-
+    
+    //MARK: Declaring Variables/Constants
+    
     let mainNavController = "ManagerNavigationController"
     let loginViewController = "LoginViewController"
     let loginButton = FBSDKLoginButton()
@@ -23,9 +24,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var userEmailAddress: UITextField!
     
     //MARK: Creating FB Button
-
+    
     override func viewDidLoad() {
-
+        
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 70)
         loginButton.center = newCenter
@@ -34,7 +35,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
-    //MARK: Navigate to View Controller
+    //MARK: Method - Navigate to View Controller
+    
     func navigateToViewController(viewcontroller: String) {
         DispatchQueue.main.async {
             let controller = self.storyboard!.instantiateViewController(withIdentifier: viewcontroller)
@@ -42,62 +44,52 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    //MARK: Facebook Login/Logout Methods
+    //MARK: Method - Facebook Login/Logout
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        //segue into a new view
-        navigateToViewController(viewcontroller: mainNavController)
         
+        navigateToViewController(viewcontroller: mainNavController)
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
         navigateToViewController(viewcontroller: loginViewController)
-        
     }
     
-    //MARK: Error Handling
+    //MARK: Method - Error Handling
     
     func displayError(title: String, message: String) -> Void {
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default) {(alert) in
             return Void()
         })
+        print("***DISPLAY ALERT***")
         self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: IBActions
-    
+   
+    //Login Button Method
     @IBAction func loginButtonPressed() {
         
         //MARK: Guard Text Fields are not Empty
-        guard !(userEmailAddress.text?.isEmpty)! else {
-            displayError(title: "Error", message: "The Password / Email Address field is empty.")
-            return
-        }
         
-        guard !(userPassword.text?.isEmpty)! else {
+        guard !(userEmailAddress.text?.isEmpty)!, !(userPassword.text?.isEmpty)! else {
             displayError(title: "Error", message: "The Password / Email Address field is empty.")
             return
         }
+
         
         //MARK: Run Udacity Authentication
+        
         UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
             
-            guard let userAccountInfo = result?["account"] as! [String:AnyObject]? else {
-                self.displayError(title: "Login Error", message: "There was an error in logging in. Please try again later.")
-                return
-            }
-            
-            guard let userKeyID = userAccountInfo["key"] as? String else {
-                self.displayError(title: "Login Error", message: "There was an error in logging in. Please try again later.")
-                return
-            }
-            
             self.navigateToViewController(viewcontroller: self.mainNavController)
-            print(userKeyID)
         }
     }
     
+    //Create Account Method
     @IBAction func createAccountButton() {
         
         UIApplication.shared.open(URL(string: "https://www.udacity.com/account/auth#!/signup")!)
