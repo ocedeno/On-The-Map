@@ -28,22 +28,20 @@ class ParseClient {
             
             //GUARD: Handling Error Return
             guard (error == nil) else {
-                self.sendError("There was an error with your request: \(error!)")
+                self.sendError("***There was an error with your request: \(error!)")
                 return
             }
             
             // GUARD: Response Error Check (Login Verified)
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                
-                ErrorReporting.showMessage(title: "Login Failed", msg: "You have used incorrect credentials to sign in. Try again.")
-                self.sendError("Your request returned a status code other than 2xx! \(response!)")
-                
+                self.sendError("***Your request returned a status code other than 2xx! \(response!)")
                 return
             }
             
             // GUARD: Data Error Check
             guard let data = data else {
-                self.sendError("No data was returned by the request!")
+                self.sendError("***No data was returned by the request!")
                 return
             }
             
@@ -61,7 +59,7 @@ class ParseClient {
             parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject?
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            sendError("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
+            sendError("***Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
         }
         
         let result = parsedResult as! [String:AnyObject]
