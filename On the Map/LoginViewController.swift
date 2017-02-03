@@ -23,16 +23,43 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var userEmailAddress: UITextField!
     
-    //MARK: Creating FB Button
     
     override func viewDidLoad() {
         
+        //MARK: Padding TextFields
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.userPassword.frame.height))
+        
+        userEmailAddress.leftView = paddingView
+        userPassword.leftView = paddingView
+        userEmailAddress.leftViewMode = UITextFieldViewMode.whileEditing
+        userPassword.leftViewMode = UITextFieldViewMode.whileEditing
+        
+        //MARK: Creating FB Button
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 70)
         loginButton.center = newCenter
         loginButton.delegate = self
         self.view.addSubview(loginButton)
         
+        //MARK: Populating Data Model Object
+        populateData()
+        
+    }
+    
+    func populateData(){
+        
+        ParseClient.sharedInstance().getStudentLocations(limit: 100) { (result, error) in
+            
+            DispatchQueue.main.async {
+                
+                guard (result != nil), (error == nil) else {
+                    print("Results were nil")
+                    return
+                }
+                
+                AppDelegate.sharedInstance().studArray = StudentInformation.convertStudentData(array: result!)
+            }
+        }
     }
     
     //MARK: Method - Navigate to View Controller
@@ -69,7 +96,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     //MARK: IBActions
-   
+    
     //Login Button Method
     @IBAction func loginButtonPressed() {
         
@@ -79,7 +106,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             displayError(title: "Error", message: "The Password / Email Address field is empty.")
             return
         }
-
+        
         
         //MARK: Run Udacity Authentication
         

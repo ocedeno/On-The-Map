@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -132,24 +132,34 @@
             </objects>
             <point key="canvasLocation" x="109" y="-47"/>
         </scene>
-        <!--Locations List View Controller-->
-        <scene sceneID="1HZ-1I-edy">
+        <!--Item-->
+        <scene sceneID="HgB-pu-t1m">
             <objects>
-                <viewController storyboardIdentifier="LocationsListViewController" id="w8k-aO-55p" userLabel="Locations List View Controller" customClass="LocationListViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kXg-jE-7gP"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Cp-AU-cz8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="h3C-Pl-oH0">
+                <tableViewController id="DYJ-ag-85o" customClass="LocationListViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CPI-KY-1mC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="List" image="list" id="5IL-KR-sQg"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="emL-vP-t1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="hyT-ma-tJS">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hyT-ma-tJS" id="rxr-9Z-NG6">
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DYJ-ag-85o" id="hr1-Ea-eH9"/>
+                            <outlet property="delegate" destination="DYJ-ag-85o" id="WYY-9P-4UO"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" image="list" id="IOs-vQ-cOD"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pNB-aL-aMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693" y="373"/>
+            <point key="canvasLocation" x="1693" y="316"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bRS-c4-cWC">
@@ -214,7 +224,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="l7d-JE-07Y" kind="relationship" relationship="viewControllers" id="vOq-7w-huN"/>
-                        <segue destination="w8k-aO-55p" kind="relationship" relationship="viewControllers" id="Q6G-zd-4MC"/>
+                        <segue destination="DYJ-ag-85o" kind="relationship" relationship="viewControllers" id="CZT-Ra-ZjT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9D-C3-DPo" userLabel="First Responder" sceneMemberID="firstResponder"/>

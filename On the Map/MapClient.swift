@@ -33,18 +33,15 @@ class MapClient {
         }
     }
     
-    func updateStudentLocations(mapView: MKMapView, result:[[String:AnyObject]]) {
+    func updateStudentLocations(mapView: MKMapView, result: [StudentInformation]) {
         
-        for location in result {
-            guard let _ = location["latitude"], let _ = location["longitude"] else {
-                print("Did not contain a lat/long.")
-                return
-            }
+        for x in result {
+            
             let annotation = MKPointAnnotation()
-            annotation.title = "\(location["firstName"] as! String) \(location["lastName"] as! String)"
-            annotation.subtitle = location["mediaURL"] as? String
-            let latitude : CLLocationDegrees = CLLocationDegrees(exactly: location["latitude"] as! Double)!
-            let longitude : CLLocationDegrees = CLLocationDegrees(exactly: location["longitude"] as! Double)!
+            annotation.title = "\(x.firstName) \(x.lastName)"
+            annotation.subtitle = x.mediaURL
+            let latitude : CLLocationDegrees = CLLocationDegrees(exactly: x.lat)!
+            let longitude : CLLocationDegrees = CLLocationDegrees(exactly: x.long)!
             annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
             mapView.addAnnotation(annotation)
         }

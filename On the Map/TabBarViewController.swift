@@ -10,10 +10,10 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
+    var mapClient = MapClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func logoutPressed() {
@@ -22,13 +22,21 @@ class TabBarViewController: UITabBarController {
             self.present(controller, animated: true, completion: nil)
         }
     }
-
+    
     @IBAction func placeUserLocation(_ sender: UIBarButtonItem) {
         
     }
     
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
-        
+        LoginViewController.sharedInstance().populateData()
     }
     
+    //MARK: Shared Instance
+    class func sharedInstance() -> TabBarViewController {
+        struct Singleton {
+            static var sharedInstance = TabBarViewController()
+        }
+        return Singleton.sharedInstance
+    }
+
 }
