@@ -10,8 +10,6 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
-    var mapClient = MapClient()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,6 +27,9 @@ class TabBarViewController: UITabBarController {
     
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
         LoginViewController.sharedInstance().populateData()
+        if self.selectedIndex == 0 {
+            MapViewController.sharedInstance().updateMapLocations()
+        }
     }
     
     //MARK: Shared Instance

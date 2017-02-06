@@ -13,7 +13,7 @@ import CoreLocation
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: IBOutlets
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet var mapView: MKMapView!
     
     //MARK: Variable/Constants Declarations
     var locationManager = CLLocationManager()
