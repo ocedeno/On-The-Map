@@ -59,14 +59,21 @@ class MapClient {
             }
             
             let placemark = placemarks?[0]
-            let location = placemark?.location
-            let coordinate = location?.coordinate
+            let userLocation = placemark?.location
+            let coordinate = userLocation?.coordinate
             
             let annotation = MKPointAnnotation()
             let latitude : CLLocationDegrees = CLLocationDegrees(exactly: coordinate!.latitude)!
             let longitude : CLLocationDegrees = CLLocationDegrees(exactly: coordinate!.longitude)!
             annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
             mapView.addAnnotation(annotation)
+            
+            let latDelta: CLLocationDegrees = 0.5
+            let lonDelta: CLLocationDegrees = 0.5
+            let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
+            let location = CLLocationCoordinate2DMake(latitude, longitude)
+            let region = MKCoordinateRegion(center: location, span: span)
+            mapView.setRegion(region, animated: true)
             
         })
     }
