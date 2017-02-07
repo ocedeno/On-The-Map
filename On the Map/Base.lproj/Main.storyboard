@@ -184,9 +184,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qFf-Qh-LtR">
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SY2-kF-tKQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -197,12 +194,12 @@
                                             <constraint firstAttribute="width" secondItem="Exv-bW-TtA" secondAttribute="height" multiplier="23:10" id="3VZ-aZ-puB"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w6j-rV-Qx9">
-                                        <rect key="frame" x="0.0" y="163" width="375" height="413.5"/>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w6j-rV-Qx9">
+                                        <rect key="frame" x="0.0" y="163" width="375" height="413"/>
                                         <color key="backgroundColor" red="0.01254620962" green="0.70322984460000004" blue="0.89525538680000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MK7-H0-b9v">
-                                        <rect key="frame" x="0.0" y="576.5" width="375" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="576" width="375" height="91"/>
                                         <color key="backgroundColor" red="0.80327966370000004" green="0.80327966370000004" blue="0.80327966370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MK7-H0-b9v" secondAttribute="height" multiplier="207:50" id="0OP-5x-Qxz"/>
@@ -216,14 +213,17 @@
                                     <constraint firstItem="w6j-rV-Qx9" firstAttribute="leading" secondItem="SY2-kF-tKQ" secondAttribute="leading" id="sXv-ea-u08"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-qU-z5e">
-                                <rect key="frame" x="125.5" y="605" width="124" height="32"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qFf-Qh-LtR">
+                                <rect key="frame" x="0.0" y="161" width="375" height="506"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-qU-z5e">
+                                <rect key="frame" x="126" y="605.5" width="124" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <state key="normal" title="Find on the Map"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -231,7 +231,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtJ-35-KEL">
-                                <rect key="frame" x="99" y="32.5" width="178.5" height="98.5"/>
+                                <rect key="frame" x="98.5" y="32.5" width="178.5" height="98.5"/>
                                 <string key="text">Where are you
 studying
 today?</string>
@@ -239,14 +239,14 @@ today?</string>
                                 <color key="textColor" red="0.01254620962" green="0.70322984460000004" blue="0.89525538680000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ut4-Su-ChR">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a Location" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ut4-Su-ChR">
                                 <rect key="frame" x="112.5" y="321.5" width="150" height="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" placeholder="Add Your Media URL" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Q07-GT-czG">
-                                <rect key="frame" x="93.5" y="69.5" width="189" height="24"/>
+                                <rect key="frame" x="93" y="70" width="189" height="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -260,10 +260,14 @@ today?</string>
                             <constraint firstAttribute="bottom" secondItem="SY2-kF-tKQ" secondAttribute="bottom" id="DSm-rl-lmZ"/>
                             <constraint firstItem="Q07-GT-czG" firstAttribute="centerX" secondItem="Exv-bW-TtA" secondAttribute="centerX" id="HV8-gA-xNi"/>
                             <constraint firstItem="SY2-kF-tKQ" firstAttribute="top" secondItem="Pks-2p-mo6" secondAttribute="top" id="VBk-Yo-iMh"/>
+                            <constraint firstItem="qFf-Qh-LtR" firstAttribute="top" secondItem="Exv-bW-TtA" secondAttribute="bottom" constant="-2" id="XO5-OA-hRV"/>
                             <constraint firstItem="ut4-Su-ChR" firstAttribute="centerX" secondItem="Pks-2p-mo6" secondAttribute="centerX" id="aec-1a-0Ea"/>
                             <constraint firstItem="QtJ-35-KEL" firstAttribute="centerY" secondItem="Exv-bW-TtA" secondAttribute="centerY" id="fXc-8v-Tzt"/>
+                            <constraint firstItem="qFf-Qh-LtR" firstAttribute="leading" secondItem="Pks-2p-mo6" secondAttribute="leading" id="kcY-RB-jOA"/>
+                            <constraint firstItem="oR6-j6-3LL" firstAttribute="top" secondItem="qFf-Qh-LtR" secondAttribute="bottom" id="kxq-4Q-ntP"/>
                             <constraint firstItem="QtJ-35-KEL" firstAttribute="centerX" secondItem="Exv-bW-TtA" secondAttribute="centerX" id="rl6-dk-8UO"/>
                             <constraint firstItem="SY2-kF-tKQ" firstAttribute="leading" secondItem="Pks-2p-mo6" secondAttribute="leading" id="say-61-8RJ"/>
+                            <constraint firstAttribute="trailing" secondItem="qFf-Qh-LtR" secondAttribute="trailing" id="tfD-ap-P0a"/>
                             <constraint firstItem="ut4-Su-ChR" firstAttribute="centerY" secondItem="Pks-2p-mo6" secondAttribute="centerY" id="uqM-Dd-TfI"/>
                             <constraint firstItem="uJl-qU-z5e" firstAttribute="centerX" secondItem="MK7-H0-b9v" secondAttribute="centerX" id="woe-Pa-gcp"/>
                         </constraints>
@@ -281,7 +285,7 @@ today?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYb-Xj-0Uq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2681" y="359"/>
+            <point key="canvasLocation" x="2678.2608695652175" y="357.06521739130437"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bRS-c4-cWC">

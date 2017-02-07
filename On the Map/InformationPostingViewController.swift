@@ -33,12 +33,20 @@ class InformationPostingViewController: UIViewController {
     
     @IBAction func actionButton(_ sender: UIButton) {
         
-        guard (userCurrentLocation.text != nil) else {
+        guard !(userCurrentLocation.text?.isEmpty)! else {
             print("Current Location Textfield is empty")
             return
         }
         
-        mapViewSettings(location: userCurrentLocation.text!)
+        if actionButton.titleLabel?.text == "Find on the Map" {
+            
+            mapViewSettings(location: userCurrentLocation.text!)
+        
+        } else {
+            
+            initialViewSettings()
+        
+        }
         
     }
     
@@ -46,17 +54,20 @@ class InformationPostingViewController: UIViewController {
     
     func initialViewSettings() {
         
-        mapView.isHidden = true
-        bottomImageView.alpha = 1
+        questionLabel.isHidden = false
+        userCurrentLocation.isHidden = false
         userMediaURL.isHidden = true
+        actionButton.setTitle("Find on the Map", for: .normal)
+        mapView.isHidden = true
     }
     
     func mapViewSettings(location: String) {
         
         questionLabel.isHidden = true
-        mapView.isHidden = false
         userCurrentLocation.isHidden = true
-        bottomImageView.alpha = 0.25
         userMediaURL.isHidden = false
+        actionButton.setTitle("Submit", for: .normal)
+        mapView.isHidden = false
+        
     }
 }

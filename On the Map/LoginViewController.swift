@@ -53,7 +53,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             DispatchQueue.main.async {
                 
                 guard (result != nil), (error == nil) else {
-                    print("Results were nil")
+                    print("Results were nil. Error:\(error)")
                     return
                 }
                 
