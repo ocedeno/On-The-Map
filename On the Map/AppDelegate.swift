@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userInfo = [String:AnyObject]()
     var currentUserLat = 0.0
     var currentUserLon = 0.0
+    var currentUserKeyID : String?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

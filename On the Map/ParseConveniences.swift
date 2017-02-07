@@ -41,13 +41,13 @@ extension ParseClient {
     }
     
     //post User's Location
-    func postStudentLocation (userKeyID: String, firstName: String, lastName: String, mapString: String){
+    func postStudentLocation (userKeyID: String, mapString: String, studentInformation: StudentInformation){
         
         let request = NSMutableURLRequest(url: URL(string: ParseRequest.baseURLSecured)!)
         request.httpMethod = "POST"
         request.addValue(ParseConstants.parseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(ParseConstants.parseRestApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.httpBody = "{\"uniqueKey\": \"\(uniqueKey)\", \"firstName\": \"\(firstNAme)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": 37.386052, \"longitude\": -122.083851}".data(using: String.Encoding.utf8)
+        request.httpBody = "{\"uniqueKey\": \"\(userKeyID)\", \"firstName\": \"\(studentInformation.firstName)\", \"lastName\": \"\(studentInformation.lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(studentInformation.mediaURL)\",\"latitude\": \(studentInformation.lat), \"longitude\": \(studentInformation.long)}".data(using: String.Encoding.utf8)
     }
 }

@@ -113,6 +113,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             let accountDictionary = result?["account"]!
             let userKeyID = accountDictionary?["key"] as? String
+            AppDelegate.sharedInstance().currentUserKeyID = userKeyID
             UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID!, completionHandler: { (results, error) in
                 
                 let userData = results?["user"] as! [String : AnyObject]
