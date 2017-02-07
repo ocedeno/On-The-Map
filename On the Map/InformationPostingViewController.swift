@@ -20,12 +20,15 @@ class InformationPostingViewController: UIViewController {
     @IBOutlet weak var bottomImageView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var userCurrentLocation: UITextField!
+    @IBOutlet weak var userMediaURL: UITextField!
     
     //MARK: IBActions
     
-    @IBAction func searchForUserLocation() {
+    @IBAction func actionButton(_ sender: UIButton) {
+        
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

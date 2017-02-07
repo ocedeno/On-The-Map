@@ -61,9 +61,7 @@ struct StudentInformation {
         
         for x in array {
             
-            var count = 0
             if (x["latitude"] == nil), (x["longitude"] == nil) {
-                count += 1
                 print("Did not contain a lat/long. \(count)")
             } else {
                 
