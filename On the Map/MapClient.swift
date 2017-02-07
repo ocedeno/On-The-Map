@@ -9,10 +9,12 @@
 import Foundation
 import MapKit
 import CoreLocation
+import AddressBookUI
 
 class MapClient {
     
     func updateCurrentLocation(locationManager: CLLocationManager, mapView: MKMapView) {
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
@@ -47,5 +49,25 @@ class MapClient {
         }
     }
     
-    
+    func forwardGeocoding(address: String, mapView: MKMapView) {
+        
+        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            
+            guard (error == nil), let _ = placemarks else {
+                print("There was an issue finding that location. \(error)")
+                return
+            }
+            
+            let placemark = placemarks?[0]
+            let location = placemark?.location
+            let coordinate = location?.coordinate
+            
+            let annotation = MKPointAnnotation()
+            let latitude : CLLocationDegrees = CLLocationDegrees(exactly: coordinate!.latitude)!
+            let longitude : CLLocationDegrees = CLLocationDegrees(exactly: coordinate!.longitude)!
+            annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            mapView.addAnnotation(annotation)
+            
+        })
+    }
 }

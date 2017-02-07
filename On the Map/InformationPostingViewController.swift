@@ -29,6 +29,8 @@ class InformationPostingViewController: UIViewController {
         initialViewSettings()
     }
     
+    var mapVC = MapClient()
+    
     //MARK: IBActions
     
     @IBAction func actionButton(_ sender: UIButton) {
@@ -40,12 +42,10 @@ class InformationPostingViewController: UIViewController {
         
         if actionButton.titleLabel?.text == "Find on the Map" {
             
-            mapViewSettings(location: userCurrentLocation.text!)
-        
-        } else {
+            mapViewSettings(location: userCurrentLocation.text!, mapView: mapView)
             
-            initialViewSettings()
-        
+        } else {
+            //Do submission action
         }
         
     }
@@ -61,13 +61,14 @@ class InformationPostingViewController: UIViewController {
         mapView.isHidden = true
     }
     
-    func mapViewSettings(location: String) {
+    func mapViewSettings(location: String, mapView: MKMapView) {
         
         questionLabel.isHidden = true
         userCurrentLocation.isHidden = true
         userMediaURL.isHidden = false
         actionButton.setTitle("Submit", for: .normal)
         mapView.isHidden = false
+        mapVC.forwardGeocoding(address: location, mapView: mapView)
         
     }
 }
