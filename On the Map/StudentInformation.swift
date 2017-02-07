@@ -62,7 +62,7 @@ struct StudentInformation {
         for x in array {
             
             if (x["latitude"] == nil), (x["longitude"] == nil) {
-                print("Did not contain a lat/long. \(count)")
+                print("Did not contain a lat/long.")
             } else {
                 
                 let studElement = StudentInformation(userDict: x)

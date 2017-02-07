@@ -14,7 +14,8 @@ class InformationPostingViewController: UIViewController {
     
     //MARK: IBOutlets
 
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var centerImageView: UIImageView!
     @IBOutlet weak var bottomImageView: UIImageView!
@@ -22,17 +23,40 @@ class InformationPostingViewController: UIViewController {
     @IBOutlet weak var userCurrentLocation: UITextField!
     @IBOutlet weak var userMediaURL: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+     
+        initialViewSettings()
+    }
+    
     //MARK: IBActions
     
     @IBAction func actionButton(_ sender: UIButton) {
         
+        guard (userCurrentLocation.text != nil) else {
+            print("Current Location Textfield is empty")
+            return
+        }
+        
+        mapViewSettings(location: userCurrentLocation.text!)
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    //MARK: Method for Resetting View
+    
+    func initialViewSettings() {
+        
+        mapView.isHidden = true
+        bottomImageView.alpha = 1
+        userMediaURL.isHidden = true
     }
-
+    
+    func mapViewSettings(location: String) {
+        
+        questionLabel.isHidden = true
+        mapView.isHidden = false
+        userCurrentLocation.isHidden = true
+        bottomImageView.alpha = 0.25
+        userMediaURL.isHidden = false
+    }
 }
