@@ -73,7 +73,6 @@ class UdacityClient: NSObject {
         let userInfoDictionary = parsedResult as! [String:AnyObject]
         
         completionHandler(userInfoDictionary, nil)
-        
     }
     
     //MARK: Shared Instance

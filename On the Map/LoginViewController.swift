@@ -106,11 +106,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             displayError(title: "Error", message: "The Password / Email Address field is empty.")
             return
         }
-        
-        
+    
         //MARK: Run Udacity Authentication
         
         UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
+            
+            let accountDictionary = result?["account"]!
+            let userKeyID = accountDictionary?["key"] as? String
+            UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID!, completionHandler: { (results, error) in
+                
+                let userData = results?["user"] as! [String : AnyObject]
+                AppDelegate.sharedInstance().userInfo = userData
+                
+            })
             
             self.navigateToViewController(viewcontroller: self.mainNavController)
         }

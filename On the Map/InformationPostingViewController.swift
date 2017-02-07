@@ -47,6 +47,7 @@ class InformationPostingViewController: UIViewController {
             
         } else {
             //Do submission action
+            print("\(AppDelegate.sharedInstance().userInfo["first_name"])")
         }
         
     }
