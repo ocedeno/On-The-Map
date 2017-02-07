@@ -22,6 +22,7 @@ class InformationPostingViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var userCurrentLocation: UITextField!
     @IBOutlet weak var userMediaURL: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class InformationPostingViewController: UIViewController {
             return
         }
         
-        if actionButton.titleLabel?.text == "Find on the Map" {
+        if actionButton.titleLabel?.text == " Find on the Map " {
             
             mapViewSettings(location: userCurrentLocation.text!, mapView: mapView)
             
@@ -50,14 +51,14 @@ class InformationPostingViewController: UIViewController {
         
     }
     
-    //MARK: Method for Resetting View
+    //MARK: Method for Resetting Views
     
     func initialViewSettings() {
         
         questionLabel.isHidden = false
         userCurrentLocation.isHidden = false
         userMediaURL.isHidden = true
-        actionButton.setTitle("Find on the Map", for: .normal)
+        actionButton.setTitle(" Find on the Map ", for: .normal)
         mapView.isHidden = true
     }
     
@@ -66,9 +67,20 @@ class InformationPostingViewController: UIViewController {
         questionLabel.isHidden = true
         userCurrentLocation.isHidden = true
         userMediaURL.isHidden = false
-        actionButton.setTitle("Submit", for: .normal)
+        actionButton.setTitle(" Submit ", for: .normal)
         mapView.isHidden = false
         mapVC.forwardGeocoding(address: location, mapView: mapView)
         
     }
+    
+    //MARK: Resign Current View Controller
+    
+    @IBAction func cancelAction() {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+
+
+
 }

@@ -22,7 +22,7 @@ class TabBarViewController: UITabBarController {
     }
     
     @IBAction func placeUserLocation(_ sender: UIBarButtonItem) {
-        
+        performSegue(withIdentifier: "AddUserLocation", sender: self)
     }
     
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {

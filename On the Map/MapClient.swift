@@ -66,6 +66,7 @@ class MapClient {
             let latitude : CLLocationDegrees = CLLocationDegrees(exactly: coordinate!.latitude)!
             let longitude : CLLocationDegrees = CLLocationDegrees(exactly: coordinate!.longitude)!
             annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            annotation.title = address
             mapView.addAnnotation(annotation)
             
             let latDelta: CLLocationDegrees = 0.5
