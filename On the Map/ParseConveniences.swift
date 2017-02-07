@@ -41,7 +41,7 @@ extension ParseClient {
     }
     
     //post User's Location
-    func postStudentLocation (userKeyID: String, mapString: String, studentInformation: StudentInformation){
+    func postStudentLocation (userKeyID: String, mapString: String, studentInformation: StudentInformation, completionHandler: @escaping (_ result: [[String: AnyObject]]?, _ error: NSError?) -> Void){
         
         let request = NSMutableURLRequest(url: URL(string: ParseRequest.baseURLSecured)!)
         request.httpMethod = "POST"
@@ -49,5 +49,7 @@ extension ParseClient {
         request.addValue(ParseConstants.parseRestApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = "{\"uniqueKey\": \"\(userKeyID)\", \"firstName\": \"\(studentInformation.firstName)\", \"lastName\": \"\(studentInformation.lastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(studentInformation.mediaURL)\",\"latitude\": \(studentInformation.lat), \"longitude\": \(studentInformation.long)}".data(using: String.Encoding.utf8)
+        
+        ParseClient.sharedInstance().taskForSession(request: request, completionHandler: completionHandler)
     }
 }

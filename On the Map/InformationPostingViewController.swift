@@ -89,7 +89,9 @@ class InformationPostingViewController: UIViewController {
         ]
         
         let studStruc : StudentInformation = StudentInformation(userDict: studentStructDictionary)
-        AppDelegate.sharedInstance().studArray.append(studStruc)
+        ParseClient.sharedInstance().postStudentLocation(userKeyID: AppDelegate.sharedInstance().currentUserKeyID!, mapString: userCurrentLocation.text!, studentInformation: studStruc) { (results, error) in
+            
+        }
     }
     
     //MARK: Resign Current View Controller

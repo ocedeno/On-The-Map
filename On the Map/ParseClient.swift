@@ -46,7 +46,7 @@ class ParseClient {
             }
             
             self.convertDataWithCompletionHandler(data, completionHandler: completionHandler)
-            
+            print(statusCode)
         }
         task.resume()
     }
