@@ -76,6 +76,8 @@ class MapClient {
             let region = MKCoordinateRegion(center: location, span: span)
             mapView.setRegion(region, animated: true)
             
+            AppDelegate.sharedInstance().currentUserLat = latitude
+            AppDelegate.sharedInstance().currentUserLon = longitude
         })
     }
 }

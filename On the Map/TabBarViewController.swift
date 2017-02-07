@@ -26,10 +26,7 @@ class TabBarViewController: UITabBarController {
     }
     
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
-        LoginViewController.sharedInstance().populateData()
-        if self.selectedIndex == 0 {
-            MapViewController.sharedInstance().updateMapLocations()
-        }
+        print(AppDelegate.sharedInstance().studArray)
     }
     
     //MARK: Shared Instance

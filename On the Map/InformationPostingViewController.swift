@@ -47,7 +47,8 @@ class InformationPostingViewController: UIViewController {
             
         } else {
             //Do submission action
-            print("\(AppDelegate.sharedInstance().userInfo["first_name"])")
+            submitUserLocation(mediaURL: userMediaURL.text!)
+            cancelAction()
         }
         
     }
@@ -74,6 +75,23 @@ class InformationPostingViewController: UIViewController {
         
     }
     
+    //MARK: Method for Submitting User Location
+    
+    func submitUserLocation(mediaURL: String) {
+        
+        let userDictionary = AppDelegate.sharedInstance().userInfo
+        let studentStructDictionary : [String: AnyObject] = [
+            "firstName" : userDictionary["first_name"]! as AnyObject,
+            "lastName" : userDictionary["last_name"]! as AnyObject,
+            "mediaURL" : mediaURL as AnyObject,
+            "latitude" : AppDelegate.sharedInstance().currentUserLat as AnyObject,
+            "longitude" : AppDelegate.sharedInstance().currentUserLon as AnyObject
+        ]
+        
+        let studStruc : StudentInformation = StudentInformation(userDict: studentStructDictionary)
+        AppDelegate.sharedInstance().studArray.append(studStruc)
+    }
+    
     //MARK: Resign Current View Controller
     
     @IBAction func cancelAction() {
@@ -81,7 +99,4 @@ class InformationPostingViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         
     }
-
-
-
 }
