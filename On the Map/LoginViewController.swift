@@ -46,6 +46,25 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
+    func getFBData(){
+        
+        //MARK: Graph Request for Facebook
+        let params = ["fields" : "first_name, last_name"]
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: params)!
+        graphRequest.start { (connection, result, error) in
+            
+            guard (error == nil) else {
+                print("There was an error retrieving user info from FB. **\(error)**")
+                return
+            }
+            
+            let userData = result as! [String: AnyObject]
+            let currentUserID = userData["id"]
+            AppDelegate.sharedInstance().userInfo = userData
+            AppDelegate.sharedInstance().currentUserKeyID = currentUserID as! String?
+        }
+    }
+    
     func populateData(){
         
         ParseClient.sharedInstance().getStudentLocations(limit: 100) { (result, error) in
@@ -76,6 +95,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
         navigateToViewController(viewcontroller: mainNavController)
+        getFBData()
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -106,7 +126,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             displayError(title: "Error", message: "The Password / Email Address field is empty.")
             return
         }
-    
+        
         //MARK: Run Udacity Authentication
         
         UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in

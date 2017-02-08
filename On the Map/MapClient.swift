@@ -80,4 +80,14 @@ class MapClient {
             AppDelegate.sharedInstance().currentUserLon = longitude
         })
     }
+    
+    func centralizeLocations (lat: Double, lon: Double, mapView: MKMapView) {
+        
+        let latDelta: CLLocationDegrees = 0.5
+        let lonDelta: CLLocationDegrees = 0.5
+        let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
+        let location = CLLocationCoordinate2DMake(lat, lon)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+    }
 }

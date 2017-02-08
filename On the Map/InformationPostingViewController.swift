@@ -30,7 +30,7 @@ class InformationPostingViewController: UIViewController {
         initialViewSettings()
     }
     
-    var mapVC = MapClient()
+    var mapClient = MapClient()
     
     //MARK: IBActions
     
@@ -71,8 +71,7 @@ class InformationPostingViewController: UIViewController {
         userMediaURL.isHidden = false
         actionButton.setTitle(" Submit ", for: .normal)
         mapView.isHidden = false
-        mapVC.forwardGeocoding(address: location, mapView: mapView)
-        
+        mapClient.forwardGeocoding(address: location, mapView: mapView)
     }
     
     //MARK: Method for Submitting User Location
