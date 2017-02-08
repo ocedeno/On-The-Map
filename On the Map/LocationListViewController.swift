@@ -10,9 +10,21 @@ import UIKit
 
 class LocationListViewController: UITableViewController {
 
-    //MARK: IBActions
+    //MARK: variables/constants
     
     let studentArray = DataModelObject.sharedInstance().studArray
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.refreshControl?.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+    }
+    
+    func handleRefresh (_ sender: AnyObject) {
+        LoginViewController.sharedInstance().populateData()
+        self.tableView.reloadData()
+        refreshControl?.endRefreshing()
+    }
 
     // MARK: - Table view data source
 

@@ -104,18 +104,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         navigateToViewController(viewcontroller: loginViewController)
     }
     
-    //MARK: Method - Error Handling
-    
-    func displayError(title: String, message: String) -> Void {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default) {(alert) in
-            return Void()
-        })
-        print("***DISPLAY ALERT***")
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     //MARK: IBActions
     
     //Login Button Method

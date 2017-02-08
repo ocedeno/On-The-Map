@@ -121,7 +121,7 @@
                 <navigationController storyboardIdentifier="ManagerNavigationController" id="U9F-CV-6Pq" userLabel="ManagerNavigationController" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="J8f-Km-Cu7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8f-Km-Cu7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -167,6 +167,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" image="list" id="IOs-vQ-cOD"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="3pe-2O-hzw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNB-aL-aMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
