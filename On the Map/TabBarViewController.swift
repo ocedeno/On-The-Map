@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class TabBarViewController: UITabBarController {
     
@@ -31,6 +32,8 @@ class TabBarViewController: UITabBarController {
             }
         }
         
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
     }
     
     @IBAction func placeUserLocation(_ sender: UIBarButtonItem) {

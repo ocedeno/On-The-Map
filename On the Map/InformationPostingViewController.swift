@@ -78,17 +78,17 @@ class InformationPostingViewController: UIViewController {
     
     func submitUserLocation(mediaURL: String) {
         
-        let userDictionary = AppDelegate.sharedInstance().userInfo
+        let userDictionary = DataModelObject.sharedInstance().userInfo
         let studentStructDictionary : [String: AnyObject] = [
             "firstName" : userDictionary["first_name"]! as AnyObject,
             "lastName" : userDictionary["last_name"]! as AnyObject,
             "mediaURL" : mediaURL as AnyObject,
-            "latitude" : AppDelegate.sharedInstance().currentUserLat as AnyObject,
-            "longitude" : AppDelegate.sharedInstance().currentUserLon as AnyObject
+            "latitude" : DataModelObject.sharedInstance().currentUserLat as AnyObject,
+            "longitude" : DataModelObject.sharedInstance().currentUserLon as AnyObject
         ]
         
         let studStruc : StudentInformation = StudentInformation(userDict: studentStructDictionary)
-        ParseClient.sharedInstance().postStudentLocation(userKeyID: AppDelegate.sharedInstance().currentUserKeyID!, mapString: userCurrentLocation.text!, studentInformation: studStruc) { (results, error) in
+        ParseClient.sharedInstance().postStudentLocation(userKeyID: DataModelObject.sharedInstance().currentUserKeyID!, mapString: userCurrentLocation.text!, studentInformation: studStruc) { (results, error) in
             
         }
     }
