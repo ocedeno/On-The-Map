@@ -225,7 +225,7 @@
                                 <rect key="frame" x="0.0" y="178" width="414" height="558"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-qU-z5e">
-                                <rect key="frame" x="146" y="670.33333333333337" width="124" height="32"/>
+                                <rect key="frame" x="145" y="670.33333333333337" width="124" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <state key="normal" title="Find on the Map"/>

@@ -39,6 +39,7 @@ class LocationListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = ("\(studentArray[indexPath.row].firstName) \(studentArray[indexPath.row].lastName)")
@@ -47,7 +48,11 @@ class LocationListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
+        
+        
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     /*

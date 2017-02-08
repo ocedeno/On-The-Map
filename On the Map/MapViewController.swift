@@ -43,7 +43,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinTintColor = UIColor.magenta
+            pinView!.pinTintColor = .blue
             pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
         }
         else {
