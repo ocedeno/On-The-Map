@@ -12,7 +12,7 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    //MARK: Declaring Variables/Constants
+    //MARK: Declare Variables/Constants
     
     let mainNavController = "ManagerNavigationController"
     let loginViewController = "LoginViewController"
@@ -53,7 +53,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         graphRequest.start { (connection, result, error) in
             
             guard (error == nil) else {
-                print("There was an error retrieving user info from FB. **\(error)**")
+                self.displayError(title: "Login Issue", message: "There was an error retrieving your information from Facebook.")
+                self.sendError("***Retrieving Userinfo unsuccessful. Error: \(error)***")
                 return
             }
             
@@ -73,7 +74,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             DispatchQueue.main.async {
                 
                 guard (result != nil), (error == nil) else {
-                    print("Results were nil. Error:\(error)")
+                    self.displayError(title: "Retrieving Data", message: "Could not retrieve student locations from Parse. Try again later.")
+                    self.sendError("Populating student data returned nil. Error:\(error)")
                     return
                 }
                 
@@ -82,26 +84,17 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    //MARK: Method - Navigate to View Controller
-    
-    func navigateToViewController(viewcontroller: String) {
-        DispatchQueue.main.async {
-            let controller = self.storyboard!.instantiateViewController(withIdentifier: viewcontroller)
-            self.present(controller, animated: true, completion: nil)
-        }
-    }
-    
     //MARK: Method - Facebook Login/Logout
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
-        navigateToViewController(viewcontroller: mainNavController)
+        self.navigateToViewController(viewcontroller: mainNavController)
         getFBData()
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
-        navigateToViewController(viewcontroller: loginViewController)
+        self.navigateToViewController(viewcontroller: loginViewController)
     }
     
     //MARK: IBActions
@@ -120,10 +113,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
             
+            guard (result != nil), (error == nil) else {
+                self.sendError("There was an error authroizing Udacity. Error: \(error)")
+                self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
+                return
+            }
+            
             let accountDictionary = result?["account"]!
             let userKeyID = accountDictionary?["key"] as? String
             DataModelObject.sharedInstance().currentUserKeyID = userKeyID
             UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID!, completionHandler: { (results, error) in
+                
+                guard (results != nil), (error == nil) else {
+                    self.sendError("There was an error authroizing Udacity. Error: \(error)")
+                    self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
+                    return
+                }
                 
                 let userData = results?["user"] as! [String : AnyObject]
                 DataModelObject.sharedInstance().userInfo = userData

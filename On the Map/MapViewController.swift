@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     //MARK: IBOutlets
     @IBOutlet var mapView: MKMapView!
@@ -26,11 +26,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         self.mapClient.updateCurrentLocation(locationManager: locationManager, mapView: mapView)
         updateMapLocations()
-        
     }
     
     func updateMapLocations() {
         mapClient.updateStudentLocations(mapView: mapView, result: DataModelObject.sharedInstance().studArray)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = UIColor.magenta
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            if let toOpen = view.annotation?.subtitle! {
+                UIApplication.shared.open(URL(string: toOpen)!)
+            }
+        }
     }
     
     //MARK: Shared Instance

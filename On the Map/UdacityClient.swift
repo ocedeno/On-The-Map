@@ -20,11 +20,6 @@ class UdacityClient: NSObject {
     
     var appDelegate = AppDelegate()
     
-    //MARK: Error Handling
-    func sendError(_ errorMessage: String) {
-        print("\(errorMessage)")
-    }
-    
     //MARK: Task for Session
     
     func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
@@ -34,24 +29,25 @@ class UdacityClient: NSObject {
             
             //GUARD: Handling Error Return
             guard (error == nil) else {
-                self.sendError("There was an error with your request: \(error!)")
+                
+                print("There was an error with your request: \(error!)")
                 return
             }
             
             // GUARD: Response Error Check
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                self.sendError("Your request returned a status code other than 2xx! \(response!)")
+                print("Your request returned a status code other than 2xx! \(response!)")
                 return
             }
             
             // GUARD: Data Error Check
             guard let data = data else {
-                self.sendError("No data was returned by the request!")
+                print("No data was returned by the request!")
                 return
             }
 
             self.convertDataWithCompletionHandler(data, completionHandler: completionHandler)
-            print(statusCode)
+            
         }
         task.resume()
     }
@@ -67,7 +63,7 @@ class UdacityClient: NSObject {
             parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject?
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            sendError("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
+            print("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
         }
         
         let userInfoDictionary = parsedResult as! [String:AnyObject]

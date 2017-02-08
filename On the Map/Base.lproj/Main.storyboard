@@ -121,7 +121,7 @@
                 <navigationController storyboardIdentifier="ManagerNavigationController" id="U9F-CV-6Pq" userLabel="ManagerNavigationController" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8f-Km-Cu7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="J8f-Km-Cu7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -168,6 +168,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" image="list" id="IOs-vQ-cOD"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="3pe-2O-hzw">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
@@ -220,7 +221,7 @@
                                 <rect key="frame" x="0.0" y="178" width="414" height="558"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-qU-z5e">
-                                <rect key="frame" x="145.66666666666669" y="670.33333333333337" width="124.00000000000006" height="32"/>
+                                <rect key="frame" x="145.33333333333331" y="670.33333333333337" width="124.99999999999994" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <state key="normal" title="Find on the Map"/>
@@ -234,7 +235,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtJ-35-KEL">
-                                <rect key="frame" x="118" y="41" width="178.33333333333331" height="98.666666666666657"/>
+                                <rect key="frame" x="117" y="41.333333333333343" width="180.66666666666669" height="98"/>
                                 <string key="text">Where are you
 studying
 today?</string>
@@ -243,19 +244,19 @@ today?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a Location" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ut4-Su-ChR">
-                                <rect key="frame" x="132" y="356" width="150" height="24"/>
+                                <rect key="frame" x="132" y="356" width="150.33333333333331" height="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" placeholder="Add Your Media URL" textAlignment="center" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="Q07-GT-czG">
-                                <rect key="frame" x="112.66666666666669" y="78.333333333333329" width="188.66666666666663" height="24"/>
+                                <rect key="frame" x="111" y="78.333333333333329" width="192" height="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVC-1M-YJY">
-                                <rect key="frame" x="351" y="20" width="52" height="32"/>
+                                <rect key="frame" x="350" y="20" width="53" height="32"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,6 +317,9 @@ today?</string>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="p8P-St-7xc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <connections>
+                                    <outlet property="delegate" destination="l7d-JE-07Y" id="kWb-69-gL6"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
