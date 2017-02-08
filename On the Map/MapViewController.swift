@@ -32,6 +32,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapClient.updateStudentLocations(mapView: mapView, result: DataModelObject.sharedInstance().studArray)
     }
     
+    
+    //MARK:
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -42,7 +44,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
             pinView!.pinTintColor = UIColor.magenta
-            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
         }
         else {
             pinView!.annotation = annotation
