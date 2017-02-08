@@ -10,15 +10,27 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
+    var udacClient = UdacityClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func logoutPressed() {
+        
         DispatchQueue.main.async {
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
             self.present(controller, animated: true, completion: nil)
         }
+        
+        udacClient.udacityLogoutRequest { (result, error) in
+            
+            guard (error == nil) else {
+                print("There was an error logging user out of Udacity. **\(error)**")
+                return
+            }
+        }
+        
     }
     
     @IBAction func placeUserLocation(_ sender: UIBarButtonItem) {
@@ -26,7 +38,12 @@ class TabBarViewController: UITabBarController {
     }
     
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
-        print(AppDelegate.sharedInstance().studArray)
+        
+        LoginViewController.sharedInstance().populateData()
+        let mapVC = self.viewControllers?[0] as? MapViewController
+        mapVC?.updateMapLocations()
+        let tbVC = self.viewControllers?[1] as? LocationListViewController
+        tbVC?.tableView.reloadData()
     }
     
     //MARK: Shared Instance
@@ -36,5 +53,5 @@ class TabBarViewController: UITabBarController {
         }
         return Singleton.sharedInstance
     }
-
+    
 }

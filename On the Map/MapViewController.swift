@@ -26,10 +26,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         self.mapClient.updateCurrentLocation(locationManager: locationManager, mapView: mapView)
         updateMapLocations()
+        
     }
     
     func updateMapLocations() {
-        mapClient.updateStudentLocations(mapView: mapView, result: AppDelegate.sharedInstance().studArray)
+        mapClient.updateStudentLocations(mapView: mapView, result: DataModelObject.sharedInstance().studArray)
     }
     
     //MARK: Shared Instance

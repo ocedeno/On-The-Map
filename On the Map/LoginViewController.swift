@@ -23,7 +23,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var userEmailAddress: UITextField!
     
-    
     override func viewDidLoad() {
         
         //MARK: Padding TextFields
@@ -60,10 +59,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             let userData = result as! [String: AnyObject]
             let currentUserID = userData["id"]
-            AppDelegate.sharedInstance().userInfo = userData
-            AppDelegate.sharedInstance().currentUserKeyID = currentUserID as! String?
+            DataModelObject.sharedInstance().userInfo = userData
+            DataModelObject.sharedInstance().currentUserKeyID = currentUserID as! String?
         }
     }
+    
+    //Method to populate the student array in App Delegate
     
     func populateData(){
         
@@ -76,7 +77,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     return
                 }
                 
-                AppDelegate.sharedInstance().studArray = StudentInformation.convertStudentData(array: result!)
+                DataModelObject.sharedInstance().studArray = StudentInformation.convertStudentData(array: result!)
             }
         }
     }
@@ -133,11 +134,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             let accountDictionary = result?["account"]!
             let userKeyID = accountDictionary?["key"] as? String
-            AppDelegate.sharedInstance().currentUserKeyID = userKeyID
+            DataModelObject.sharedInstance().currentUserKeyID = userKeyID
             UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID!, completionHandler: { (results, error) in
                 
                 let userData = results?["user"] as! [String : AnyObject]
-                AppDelegate.sharedInstance().userInfo = userData
+                DataModelObject.sharedInstance().userInfo = userData
                 
             })
             

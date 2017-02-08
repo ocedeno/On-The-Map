@@ -12,7 +12,7 @@ class LocationListViewController: UITableViewController {
 
     //MARK: IBActions
     
-    let studentArray = AppDelegate.sharedInstance().studArray
+    let studentArray = DataModelObject.sharedInstance().studArray
 
     // MARK: - Table view data source
 
@@ -23,7 +23,7 @@ class LocationListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return AppDelegate.sharedInstance().studArray.count
+        return DataModelObject.sharedInstance().studArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,7 +31,6 @@ class LocationListViewController: UITableViewController {
         
         cell.textLabel?.text = ("\(studentArray[indexPath.row].firstName) \(studentArray[indexPath.row].lastName)")
                 
-        
         return cell
     }
     

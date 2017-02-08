@@ -51,7 +51,7 @@ class UdacityClient: NSObject {
             }
 
             self.convertDataWithCompletionHandler(data, completionHandler: completionHandler)
-            
+            print(statusCode)
         }
         task.resume()
     }
