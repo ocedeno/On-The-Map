@@ -54,6 +54,18 @@ class LocationListViewController: UITableViewController {
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController")
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
+        let mediaURL = DataModelObject.sharedInstance().studArray[indexPath.row].mediaURL
+        guard (mediaURL != "") else{
+            print("***No media URL was located.***")
+            displayError(title: "Media URL", message: "Sorry, the user did not provide a Media URL.")
+            return
+        }
+        
+        UIApplication.shared.open(URL(string: mediaURL)!)
+    }
 
     /*
     // MARK: - Navigation
