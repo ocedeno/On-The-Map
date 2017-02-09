@@ -10,10 +10,10 @@ import UIKit
 import MapKit
 
 class InformationPostingViewController: UIViewController {
-
+    
     
     //MARK: IBOutlets
-
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var topImageView: UIImageView!
@@ -26,7 +26,7 @@ class InformationPostingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         initialViewSettings()
     }
     
@@ -61,6 +61,7 @@ class InformationPostingViewController: UIViewController {
         questionLabel.isHidden = false
         userCurrentLocation.isHidden = false
         userMediaURL.isHidden = true
+        topImageView.backgroundColor = Utility.sharedInstance().udacityGrey
         actionButton.setTitle(" Find on the Map ", for: .normal)
         mapView.isHidden = true
         userCurrentLocation.attributedPlaceholder = NSAttributedString(string: "Enter Your Current Location",
@@ -75,7 +76,9 @@ class InformationPostingViewController: UIViewController {
         topImageView.backgroundColor = Utility.sharedInstance().udacityBlue
         actionButton.setTitle(" Submit ", for: .normal)
         mapView.isHidden = false
-        mapClient.forwardGeocoding(address: location, mapView: mapView)
+        mapClient.forwardGeocoding(address: location,
+                                   mapView: mapView,
+                                   viewController: self)
     }
     
     //MARK: Method for Submitting User Location

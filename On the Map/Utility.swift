@@ -14,6 +14,7 @@ import UIKit
 class Utility {
     
     var udacityBlue: UIColor = UIColor(hue: 0.5472, saturation: 0.9, brightness: 0.87, alpha: 1.0)
+    var udacityGrey: UIColor = UIColor(hue: 0, saturation: 0, brightness: 0.84, alpha: 1.0)
     
     //MARK: Shared Instance
     class func sharedInstance() -> Utility {

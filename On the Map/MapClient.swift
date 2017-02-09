@@ -49,12 +49,15 @@ class MapClient {
         }
     }
     
-    func forwardGeocoding(address: String, mapView: MKMapView) {
+    func forwardGeocoding(address: String, mapView: MKMapView, viewController: UIViewController) {
         
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             
             guard (error == nil), let _ = placemarks else {
-                print("There was an issue finding that location. \(error)")
+                viewController.sendError(message: "There was an issue finding that location. \(error)")
+                viewController.displayError(title: "Incorrect Location", message: "There was an issue with the address you provided. Please check and try again.")
+                let controller = viewController as! InformationPostingViewController
+                controller.initialViewSettings()
                 return
             }
             
