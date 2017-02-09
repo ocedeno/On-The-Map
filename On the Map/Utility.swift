@@ -7,5 +7,31 @@
 //
 
 import Foundation
+import UIKit
 
 //helper functions
+
+extension UIViewController {
+    
+    func displayError(title: String, message: String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default) {(alert) in
+            
+            return Void()
+        })
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func sendError(message: String){
+        print("\(message)")
+    }
+    
+    func navigateToViewController(viewcontroller: String) {
+        DispatchQueue.main.async {
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: viewcontroller)
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+}
