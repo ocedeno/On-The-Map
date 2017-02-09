@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             guard (error == nil) else {
                 self.displayError(title: "Login Issue", message: "There was an error retrieving your information from Facebook.")
-                self.sendError("***Retrieving Userinfo unsuccessful. Error: \(error)***")
+                self.sendError(message: "***Retrieving Userinfo unsuccessful. Error: \(error)***")
                 return
             }
             
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 guard (result != nil), (error == nil) else {
                     self.displayError(title: "Retrieving Data", message: "Could not retrieve student locations from Parse. Try again later.")
-                    self.sendError("Populating student data returned nil. Error:\(error)")
+                    self.sendError(message: "Populating student data returned nil. Error:\(error)")
                     return
                 }
                 
@@ -114,7 +114,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
             
             guard (result != nil), (error == nil) else {
-                self.sendError("There was an error authroizing Udacity. Error: \(error)")
+                self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
                 self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
                 return
             }
@@ -125,7 +125,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID!, completionHandler: { (results, error) in
                 
                 guard (results != nil), (error == nil) else {
-                    self.sendError("There was an error authroizing Udacity. Error: \(error)")
+                    self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
                     self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
                     return
                 }
