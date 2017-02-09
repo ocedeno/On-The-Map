@@ -13,10 +13,14 @@ class LocationListViewController: UITableViewController {
     //MARK: variables/constants
     
     let studentArray = DataModelObject.sharedInstance().studArray
+    let mapClient = MapClient()
+    var mapVC = MapViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let controller = parent as! TabBarViewController
+        mapVC = controller.viewControllers?[0] as! MapViewController
         self.refreshControl?.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
     }
     
@@ -56,10 +60,9 @@ class LocationListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        
-        let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController")
-        self.navigationController?.pushViewController(controller, animated: true)
+        //let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        mapClient.centralizeLocations(lat: studentArray[indexPath.row].lat, lon: studentArray[indexPath.row].long, mapView: self.mapVC.mapView)
+        self.navigationController?.pushViewController(self.mapVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
