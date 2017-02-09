@@ -11,6 +11,20 @@ import UIKit
 
 //helper functions
 
+class Utility {
+    
+    var udacityBlue: UIColor = UIColor(hue: 0.5472, saturation: 0.9, brightness: 0.87, alpha: 1.0)
+    
+    //MARK: Shared Instance
+    class func sharedInstance() -> Utility {
+        struct Singleton {
+            static var sharedInstance = Utility()
+        }
+        return Singleton.sharedInstance
+    }
+
+}
+
 extension UIViewController {
     
     func displayError(title: String, message: String){

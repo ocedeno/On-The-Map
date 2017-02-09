@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0611FCAA1E4CBCA7007D1B00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCA91E4CBCA7007D1B00 /* Main.storyboard */; };
+		0611FCAE1E4CC509007D1B00 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCAB1E4CC509007D1B00 /* Roboto-Medium.ttf */; };
+		0611FCAF1E4CC509007D1B00 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCAC1E4CC509007D1B00 /* Roboto-Regular.ttf */; };
+		0611FCB01E4CC509007D1B00 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCAD1E4CC509007D1B00 /* Roboto-Thin.ttf */; };
 		0612BCF61E2BD6D7004A65D6 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCF51E2BD6D7004A65D6 /* LocationListViewController.swift */; };
 		0612BCF81E2C07DB004A65D6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCF71E2C07DB004A65D6 /* MapViewController.swift */; };
 		0612BCFB1E2C0FAF004A65D6 /* MapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCFA1E2C0FAF004A65D6 /* MapClient.swift */; };
@@ -77,6 +80,9 @@
 		06020C041E25D411009A035B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		06020C051E25D411009A035B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0611FCA91E4CBCA7007D1B00 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0611FCAB1E4CC509007D1B00 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		0611FCAC1E4CC509007D1B00 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		0611FCAD1E4CC509007D1B00 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "../Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		0612BCF51E2BD6D7004A65D6 /* LocationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		0612BCF71E2C07DB004A65D6 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0612BCFA1E2C0FAF004A65D6 /* MapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapClient.swift; sourceTree = "<group>"; };
@@ -179,7 +185,6 @@
 				06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */,
 				06874AA31E4B7096001CC184 /* Utility */,
 				06B3EB071E09C495004B0567 /* Model */,
-				06B3EB081E09C49B004B0567 /* View */,
 				06B3EB061E09C470004B0567 /* Controller */,
 				06B3EB041E09C42C004B0567 /* Supporting Files */,
 			);
@@ -219,6 +224,9 @@
 				06B3EADF1E09C3A8004B0567 /* LaunchScreen.storyboard */,
 				0611FCA91E4CBCA7007D1B00 /* Main.storyboard */,
 				06B3EADD1E09C3A8004B0567 /* Assets.xcassets */,
+				0611FCAB1E4CC509007D1B00 /* Roboto-Medium.ttf */,
+				0611FCAC1E4CC509007D1B00 /* Roboto-Regular.ttf */,
+				0611FCAD1E4CC509007D1B00 /* Roboto-Thin.ttf */,
 				06B3EB111E09CE9E004B0567 /* on the map assets */,
 			);
 			name = Assets;
@@ -244,13 +252,6 @@
 				06874AA41E4B770B001CC184 /* DataModelObjectClass.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		06B3EB081E09C49B004B0567 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		06EF0A841E2072080061E3B8 /* Frameworks */ = {
@@ -404,6 +405,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0611FCAE1E4CC509007D1B00 /* Roboto-Medium.ttf in Resources */,
+				0611FCAF1E4CC509007D1B00 /* Roboto-Regular.ttf in Resources */,
+				0611FCB01E4CC509007D1B00 /* Roboto-Thin.ttf in Resources */,
 				06B3EB121E09CE9E004B0567 /* on the map assets in Resources */,
 				06B3EAE11E09C3A8004B0567 /* LaunchScreen.storyboard in Resources */,
 				06B3EADE1E09C3A8004B0567 /* Assets.xcassets in Resources */,

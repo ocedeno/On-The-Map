@@ -9,7 +9,7 @@
 import UIKit
 
 class LocationListViewController: UITableViewController {
-
+    
     //MARK: variables/constants
     
     let studentArray = DataModelObject.sharedInstance().studArray
@@ -21,23 +21,30 @@ class LocationListViewController: UITableViewController {
     }
     
     func handleRefresh (_ sender: AnyObject) {
+
+        refreshTableView()
+    }
+    
+    func refreshTableView(){
+        
         LoginViewController.sharedInstance().populateData()
         self.tableView.reloadData()
         refreshControl?.endRefreshing()
+        print("Finisehd refreshing")
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-
+        
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return DataModelObject.sharedInstance().studArray.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -59,22 +66,11 @@ class LocationListViewController: UITableViewController {
         
         let mediaURL = DataModelObject.sharedInstance().studArray[indexPath.row].mediaURL
         guard (mediaURL != "") else{
-            print("***No media URL was located.***")
+            print("\(mediaURL)")
             displayError(title: "Media URL", message: "Sorry, the user did not provide a Media URL.")
             return
         }
         
         UIApplication.shared.open(URL(string: mediaURL)!)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

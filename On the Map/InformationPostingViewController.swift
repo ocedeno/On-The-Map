@@ -37,6 +37,7 @@ class InformationPostingViewController: UIViewController {
     @IBAction func actionButton(_ sender: UIButton) {
         
         guard !(userCurrentLocation.text?.isEmpty)! else {
+            displayError(title: "Error Finding Location", message: "Location field is empty.")
             print("Current Location Textfield is empty")
             return
         }
@@ -62,6 +63,8 @@ class InformationPostingViewController: UIViewController {
         userMediaURL.isHidden = true
         actionButton.setTitle(" Find on the Map ", for: .normal)
         mapView.isHidden = true
+        userCurrentLocation.attributedPlaceholder = NSAttributedString(string: "Enter Your Current Location",
+                                                                       attributes: [NSForegroundColorAttributeName: UIColor.white])
     }
     
     func mapViewSettings(location: String, mapView: MKMapView) {
@@ -69,6 +72,7 @@ class InformationPostingViewController: UIViewController {
         questionLabel.isHidden = true
         userCurrentLocation.isHidden = true
         userMediaURL.isHidden = false
+        topImageView.backgroundColor = Utility.sharedInstance().udacityBlue
         actionButton.setTitle(" Submit ", for: .normal)
         mapView.isHidden = false
         mapClient.forwardGeocoding(address: location, mapView: mapView)

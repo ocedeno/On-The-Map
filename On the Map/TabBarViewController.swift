@@ -37,6 +37,7 @@ class TabBarViewController: UITabBarController {
     }
     
     @IBAction func placeUserLocation(_ sender: UIBarButtonItem) {
+        
         performSegue(withIdentifier: "AddUserLocation", sender: self)
     }
     
@@ -46,7 +47,7 @@ class TabBarViewController: UITabBarController {
         let mapVC = self.viewControllers?[0] as? MapViewController
         mapVC?.updateMapLocations()
         let tbVC = self.viewControllers?[1] as? LocationListViewController
-        tbVC?.tableView.reloadData()
+        tbVC?.refreshTableView()
     }
     
     //MARK: Shared Instance
