@@ -88,13 +88,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
-        self.navigateToViewController(viewcontroller: mainNavController)
+        navigateToViewController(viewcontroller: mainNavController)
         getFBData()
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
-        self.navigateToViewController(viewcontroller: loginViewController)
+        navigateToViewController(viewcontroller: loginViewController)
     }
     
     //MARK: IBActions

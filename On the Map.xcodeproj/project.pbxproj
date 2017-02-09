@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0611FCAA1E4CBCA7007D1B00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCA91E4CBCA7007D1B00 /* Main.storyboard */; };
 		0612BCF61E2BD6D7004A65D6 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCF51E2BD6D7004A65D6 /* LocationListViewController.swift */; };
 		0612BCF81E2C07DB004A65D6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCF71E2C07DB004A65D6 /* MapViewController.swift */; };
 		0612BCFB1E2C0FAF004A65D6 /* MapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCFA1E2C0FAF004A65D6 /* MapClient.swift */; };
@@ -17,7 +18,6 @@
 		06874AA51E4B770B001CC184 /* DataModelObjectClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06874AA41E4B770B001CC184 /* DataModelObjectClass.swift */; };
 		06B3EAD71E09C3A7004B0567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */; };
 		06B3EAD91E09C3A7004B0567 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAD81E09C3A7004B0567 /* LoginViewController.swift */; };
-		06B3EADC1E09C3A8004B0567 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EADA1E09C3A8004B0567 /* Main.storyboard */; };
 		06B3EADE1E09C3A8004B0567 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EADD1E09C3A8004B0567 /* Assets.xcassets */; };
 		06B3EAE11E09C3A8004B0567 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EADF1E09C3A8004B0567 /* LaunchScreen.storyboard */; };
 		06B3EAEC1E09C3A8004B0567 /* On_the_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAEB1E09C3A8004B0567 /* On_the_MapTests.swift */; };
@@ -76,6 +76,7 @@
 		06020C021E25D3B2009A035B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		06020C041E25D411009A035B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		06020C051E25D411009A035B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		0611FCA91E4CBCA7007D1B00 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0612BCF51E2BD6D7004A65D6 /* LocationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
 		0612BCF71E2C07DB004A65D6 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0612BCFA1E2C0FAF004A65D6 /* MapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapClient.swift; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		06B3EAD31E09C3A7004B0567 /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06B3EAD81E09C3A7004B0567 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		06B3EADB1E09C3A8004B0567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06B3EADD1E09C3A8004B0567 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06B3EAE01E09C3A8004B0567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06B3EAE21E09C3A8004B0567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				06B3EADF1E09C3A8004B0567 /* LaunchScreen.storyboard */,
-				06B3EADA1E09C3A8004B0567 /* Main.storyboard */,
+				0611FCA91E4CBCA7007D1B00 /* Main.storyboard */,
 				06B3EADD1E09C3A8004B0567 /* Assets.xcassets */,
 				06B3EB111E09CE9E004B0567 /* on the map assets */,
 			);
@@ -407,7 +407,7 @@
 				06B3EB121E09CE9E004B0567 /* on the map assets in Resources */,
 				06B3EAE11E09C3A8004B0567 /* LaunchScreen.storyboard in Resources */,
 				06B3EADE1E09C3A8004B0567 /* Assets.xcassets in Resources */,
-				06B3EADC1E09C3A8004B0567 /* Main.storyboard in Resources */,
+				0611FCAA1E4CBCA7007D1B00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,14 +501,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		06B3EADA1E09C3A8004B0567 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				06B3EADB1E09C3A8004B0567 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		06B3EADF1E09C3A8004B0567 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
