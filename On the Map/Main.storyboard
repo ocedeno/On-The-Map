@@ -119,7 +119,7 @@
                 <navigationController storyboardIdentifier="ManagerNavigationController" id="U9F-CV-6Pq" userLabel="ManagerNavigationController" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8f-Km-Cu7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="J8f-Km-Cu7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -223,7 +223,7 @@
                                 <rect key="frame" x="0.0" y="178" width="414" height="558"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-qU-z5e">
-                                <rect key="frame" x="146" y="670" width="124" height="32"/>
+                                <rect key="frame" x="145" y="670" width="124" height="32"/>
                                 <color key="backgroundColor" red="0.01254620962" green="0.70322984460000004" blue="0.89525538680000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -238,7 +238,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtJ-35-KEL">
-                                <rect key="frame" x="112" y="38" width="191" height="106"/>
+                                <rect key="frame" x="112" y="37.333333333333329" width="191" height="105.66666666666667"/>
                                 <string key="text">Where are you
 studying
 today?</string>
@@ -253,7 +253,7 @@ today?</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Your Media URL" textAlignment="center" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Q07-GT-czG">
-                                <rect key="frame" x="104" y="75" width="206" height="30"/>
+                                <rect key="frame" x="104.33333333333334" y="75" width="205.66666666666666" height="30"/>
                                 <color key="textColor" red="0.01254620962" green="0.70322984460000004" blue="0.89525538680000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -304,7 +304,7 @@ today?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYb-Xj-0Uq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3141" y="-66"/>
+            <point key="canvasLocation" x="2491" y="-47"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bRS-c4-cWC">

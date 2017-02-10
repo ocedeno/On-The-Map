@@ -19,8 +19,8 @@ class LocationListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let controller = parent as! TabBarViewController
-        mapVC = controller.viewControllers?[0] as! MapViewController
+//        let controller = parent as! TabBarViewController
+//        mapVC = controller.viewControllers?[0] as! MapViewController
         self.refreshControl?.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
     }
     
@@ -31,10 +31,14 @@ class LocationListViewController: UITableViewController {
     
     func refreshTableView(){
         
-        LoginViewController.sharedInstance().populateData()
-        self.tableView.reloadData()
-        refreshControl?.endRefreshing()
-        print("Finisehd refreshing")
+        LoginViewController.sharedInstance().populateData { (result, error) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+                print("Finisehd refreshing")
+            }
+        }
+
     }
     
     // MARK: - Table view data source
@@ -60,9 +64,10 @@ class LocationListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        mapClient.centralizeLocations(lat: studentArray[indexPath.row].lat, lon: studentArray[indexPath.row].long, mapView: self.mapVC.mapView)
-        self.navigationController?.pushViewController(self.mapVC, animated: true)
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        
+        self.navigationController?.pushViewController(controller, animated: true)
+        mapClient.centralizeLocations(lat: studentArray[indexPath.row].lat, lon: studentArray[indexPath.row].long, mapView: controller.mapView)
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {

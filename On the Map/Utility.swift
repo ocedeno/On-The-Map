@@ -36,7 +36,10 @@ extension UIViewController {
             return Void()
         })
         
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func sendError(message: String){

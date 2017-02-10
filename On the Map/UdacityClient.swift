@@ -30,19 +30,22 @@ class UdacityClient: NSObject {
             //GUARD: Handling Error Return
             guard (error == nil) else {
                 
-                print("There was an error with your request: \(error!)")
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo:  [NSLocalizedDescriptionKey:"There was an error with your request: \(error!)"]))
                 return
             }
             
             // GUARD: Response Error Check
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                print("Your request returned a status code other than 2xx! \(response!)")
+                
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"Your request returned a status code other than 2xx!"]))
                 return
             }
             
             // GUARD: Data Error Check
             guard let data = data else {
-                print("No data was returned by the request!")
+                
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"No data was returned by the request!"]))
+                
                 return
             }
 

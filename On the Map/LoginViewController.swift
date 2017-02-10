@@ -41,7 +41,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.view.addSubview(loginButton)
         
         //MARK: Populating Data Model Object
-        populateData()
+        populateData { (result, error) in
+            
+        }
         
     }
     
@@ -67,7 +69,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     //Method to populate the student array in App Delegate
     
-    func populateData(){
+    func populateData(completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void){
         
         ParseClient.sharedInstance().getStudentLocations(limit: 100) { (result, error) in
             
@@ -80,6 +82,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
                 
                 DataModelObject.sharedInstance().studArray = StudentInformation.convertStudentData(array: result!)
+                completionHandler(nil, nil)
+                
             }
         }
     }
@@ -125,8 +129,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             UdacityClient.sharedInstance().getUdacityUserData(userKeyID: userKeyID!, completionHandler: { (results, error) in
                 
                 guard (results != nil), (error == nil) else {
-                    self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
-                    self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
+                    DispatchQueue.main.async {
+                        self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
+                        self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
+                    }
                     return
                 }
                 

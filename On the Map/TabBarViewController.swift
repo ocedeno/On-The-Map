@@ -43,11 +43,15 @@ class TabBarViewController: UITabBarController {
     
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
         
-        LoginViewController.sharedInstance().populateData()
-        let mapVC = self.viewControllers?[0] as? MapViewController
-        mapVC?.updateMapLocations()
-        let tbVC = self.viewControllers?[1] as? LocationListViewController
-        tbVC?.refreshTableView()
+        LoginViewController.sharedInstance().populateData { (result, error) in
+            DispatchQueue.main.async {
+                let mapVC = self.viewControllers?[0] as? MapViewController
+                mapVC?.updateMapLocations()
+                let tbVC = self.viewControllers?[1] as? LocationListViewController
+                tbVC?.refreshTableView()
+            }
+        }
+
     }
     
     //MARK: Shared Instance

@@ -49,7 +49,12 @@ class InformationPostingViewController: UIViewController {
         } else {
             //Do submission action
             submitUserLocation(mediaURL: userMediaURL.text!)
-            cancelAction()
+            let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
+                self.cancelAction()
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
         }
         
     }
@@ -96,8 +101,8 @@ class InformationPostingViewController: UIViewController {
         
         let studStruc : StudentInformation = StudentInformation(userDict: studentStructDictionary)
         ParseClient.sharedInstance().postStudentLocation(userKeyID: DataModelObject.sharedInstance().currentUserKeyID!, mapString: userCurrentLocation.text!, studentInformation: studStruc) { (results, error) in
-            
         }
+        
     }
     
     //MARK: Resign Current View Controller
