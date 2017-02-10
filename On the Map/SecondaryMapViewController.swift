@@ -33,5 +33,6 @@ class SecondaryMapViewController: UIViewController {
         let longitude : CLLocationDegrees = CLLocationDegrees(exactly: studArray.long)!
         annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         secondaryMapView.addAnnotation(annotation)
+        secondaryMapView.selectAnnotation(annotation, animated: true)
     }
 }
