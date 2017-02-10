@@ -13,14 +13,25 @@ class SecondaryMapViewController: UIViewController {
 
     @IBOutlet var secondaryMapView: MKMapView!
     let mapClient = MapClient()
-    var lat : Double!
-    var lon : Double!
-    
+    var row = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Did Segue")
-        mapClient.centralizeLocations(lat: lat, lon: lon, mapView: secondaryMapView)
         
+        initializeView()
+    }
+    
+    func initializeView() {
+        
+        let studArray = DataModelObject.sharedInstance().studArray[row]
+
+        mapClient.centralizeLocations(lat: studArray.lat, lon: studArray.long, mapView: secondaryMapView)
+        let annotation = MKPointAnnotation()
+        annotation.title = "\(studArray.firstName) \(studArray.lastName)"
+        annotation.subtitle = "\(studArray.mediaURL)"
+        let latitude : CLLocationDegrees = CLLocationDegrees(exactly: studArray.lat)!
+        let longitude : CLLocationDegrees = CLLocationDegrees(exactly: studArray.long)!
+        annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        secondaryMapView.addAnnotation(annotation)
     }
 }

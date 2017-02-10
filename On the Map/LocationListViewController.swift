@@ -67,11 +67,9 @@ class LocationListViewController: UITableViewController {
         
         if segue.identifier == "SecondaryMapViewSegue" {
             let indexPath = sender as? IndexPath
-            let userLat = studentArray[indexPath!.row].lat
-            let userLon = studentArray[indexPath!.row].long
+            let row = indexPath?.row
             let controller = segue.destination as? SecondaryMapViewController
-            controller?.lon = userLon
-            controller?.lat = userLat
+            controller?.row = row!
             print("Prepare for Segue")
         }
     }
