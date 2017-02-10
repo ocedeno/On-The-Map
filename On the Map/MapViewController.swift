@@ -23,8 +23,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DataModelObject.sharedInstance().universalMapView = mapView
         locationManager.delegate = self
-        self.mapClient.updateCurrentLocation(locationManager: locationManager, mapView: mapView)
+        self.mapClient.updateCurrentLocation(locationManager: locationManager, mapView: DataModelObject.sharedInstance().universalMapView)
         updateMapLocations()
     }
     
@@ -36,7 +37,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func updateMapLocations() {
-        mapClient.updateStudentLocations(mapView: mapView, result: DataModelObject.sharedInstance().studArray)
+        mapClient.updateStudentLocations(mapView: DataModelObject.sharedInstance().universalMapView, result: DataModelObject.sharedInstance().studArray)
     }
     
     

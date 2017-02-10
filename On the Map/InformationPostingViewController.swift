@@ -51,7 +51,16 @@ class InformationPostingViewController: UIViewController {
             submitUserLocation(mediaURL: userMediaURL.text!)
             let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
-                self.cancelAction()
+                
+                LoginViewController.sharedInstance().populateData(completionHandler: { (result, error) in
+                    
+                    DispatchQueue.main.async {
+                        self.cancelAction()
+                        MapViewController.sharedInstance().updateMapLocations()
+                        self.mapClient.centralizeLocations(lat: DataModelObject.sharedInstance().currentUserLat, lon: DataModelObject.sharedInstance().currentUserLon, mapView: DataModelObject.sharedInstance().universalMapView)
+                    }
+                })
+                
             }))
             
             self.present(alert, animated: true, completion: nil)

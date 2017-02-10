@@ -65,9 +65,8 @@ class LocationListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        
-        self.navigationController?.pushViewController(controller, animated: true)
         mapClient.centralizeLocations(lat: studentArray[indexPath.row].lat, lon: studentArray[indexPath.row].long, mapView: controller.mapView)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {

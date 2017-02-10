@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class DataModelObject {
     
@@ -15,6 +16,7 @@ class DataModelObject {
     var currentUserLat = 0.0
     var currentUserLon = 0.0
     var currentUserKeyID : String?
+    var universalMapView : MKMapView!
     
     //MARK: Shared Instance
     class func sharedInstance() -> DataModelObject {
