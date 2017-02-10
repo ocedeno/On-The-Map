@@ -26,6 +26,7 @@
 		06B3EAEC1E09C3A8004B0567 /* On_the_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAEB1E09C3A8004B0567 /* On_the_MapTests.swift */; };
 		06B3EAF71E09C3A8004B0567 /* On_the_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAF61E09C3A8004B0567 /* On_the_MapUITests.swift */; };
 		06B3EB121E09CE9E004B0567 /* on the map assets in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EB111E09CE9E004B0567 /* on the map assets */; };
+		06DB597F1E4E3B0800D120F1 /* SecondaryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB597E1E4E3B0800D120F1 /* SecondaryMapViewController.swift */; };
 		06EF07AE1E48DE44008ACC53 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EF07AD1E48DE44008ACC53 /* InformationPostingViewController.swift */; };
 		06F52A3E1E1F19CA00D314F6 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */; };
 		06F52A421E2013FC00D314F6 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A411E2013FC00D314F6 /* ParseConstants.swift */; };
@@ -104,6 +105,7 @@
 		06B3EAF61E09C3A8004B0567 /* On_the_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_the_MapUITests.swift; sourceTree = "<group>"; };
 		06B3EAF81E09C3A8004B0567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06B3EB111E09CE9E004B0567 /* on the map assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "on the map assets"; sourceTree = "<group>"; };
+		06DB597E1E4E3B0800D120F1 /* SecondaryMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryMapViewController.swift; sourceTree = "<group>"; };
 		06EF07AD1E48DE44008ACC53 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 		06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		06F52A411E2013FC00D314F6 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				0612BCF71E2C07DB004A65D6 /* MapViewController.swift */,
 				0612BCFE1E2C2268004A65D6 /* TabBarViewController.swift */,
 				06EF07AD1E48DE44008ACC53 /* InformationPostingViewController.swift */,
+				06DB597E1E4E3B0800D120F1 /* SecondaryMapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06DB597F1E4E3B0800D120F1 /* SecondaryMapViewController.swift in Sources */,
 				06874AA21E4B7090001CC184 /* Utility.swift in Sources */,
 				0645D0831E44CE65009B57B8 /* StudentInformation.swift in Sources */,
 				0612BCFB1E2C0FAF004A65D6 /* MapClient.swift in Sources */,

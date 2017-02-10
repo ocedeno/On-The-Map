@@ -173,6 +173,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
+                    <connections>
+                        <segue destination="lwc-QY-5bU" kind="show" identifier="SecondaryMapViewSegue" id="F2b-eW-bj0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNB-aL-aMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -306,10 +309,10 @@ today?</string>
             </objects>
             <point key="canvasLocation" x="2491" y="-47"/>
         </scene>
-        <!--View Controller-->
+        <!--Secondary Map View Controller-->
         <scene sceneID="gRP-QQ-YPG">
             <objects>
-                <viewController id="lwc-QY-5bU" sceneMemberID="viewController">
+                <viewController id="lwc-QY-5bU" customClass="SecondaryMapViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xjx-Kk-DaS"/>
                         <viewControllerLayoutGuide type="bottom" id="AlT-9W-Q0U"/>
@@ -325,6 +328,9 @@ today?</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="secondaryMapView" destination="0xt-YN-A2F" id="4Gj-uj-UIw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2m-oS-llm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

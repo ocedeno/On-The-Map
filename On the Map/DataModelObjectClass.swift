@@ -17,6 +17,7 @@ class DataModelObject {
     var currentUserLon = 0.0
     var currentUserKeyID : String?
     var universalMapView : MKMapView!
+    var secondaryUniversalMapView : MKMapView!
     
     //MARK: Shared Instance
     class func sharedInstance() -> DataModelObject {

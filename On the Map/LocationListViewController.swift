@@ -15,6 +15,7 @@ class LocationListViewController: UITableViewController {
     let studentArray = DataModelObject.sharedInstance().studArray
     let mapClient = MapClient()
     var mapVC = MapViewController()
+    let controller = SecondaryMapViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,11 +63,22 @@ class LocationListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
         
-        let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        mapClient.centralizeLocations(lat: studentArray[indexPath.row].lat, lon: studentArray[indexPath.row].long, mapView: controller.mapView)
-        self.navigationController?.pushViewController(controller, animated: true)
+        if segue.identifier == "SecondaryMapViewSegue" {
+            let indexPath = sender as? IndexPath
+            let userLat = studentArray[indexPath!.row].lat
+            let userLon = studentArray[indexPath!.row].long
+            let controller = segue.destination as? SecondaryMapViewController
+            controller?.lon = userLon
+            controller?.lat = userLat
+            print("Prepare for Segue")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        self.performSegue(withIdentifier: "SecondaryMapViewSegue", sender: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
