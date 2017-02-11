@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class InformationPostingViewController: UIViewController {
+class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: IBOutlets
@@ -24,13 +24,28 @@ class InformationPostingViewController: UIViewController {
     @IBOutlet weak var userMediaURL: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
     
+    var mapClient = MapClient()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userCurrentLocation.delegate = self
+        userMediaURL.delegate = self
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector (InformationPostingViewController.dismissKeyboard)))
         
         initialViewSettings()
     }
     
-    var mapClient = MapClient()
+    func dismissKeyboard() {
+        userCurrentLocation.resignFirstResponder()
+        userMediaURL.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userCurrentLocation.resignFirstResponder()
+        userMediaURL.resignFirstResponder()
+        return true
+    }
     
     //MARK: IBActions
     
@@ -48,6 +63,11 @@ class InformationPostingViewController: UIViewController {
             
         } else {
             //Do submission action
+            guard (userMediaURL.text != nil) else {
+                self.displayError(title: "Error", message: "Please add a Media URL")
+                return
+            }
+            
             submitUserLocation(mediaURL: userMediaURL.text!)
             let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in

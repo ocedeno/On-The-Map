@@ -259,7 +259,7 @@ today?</string>
                                 <rect key="frame" x="104.33333333333334" y="75" width="205.66666666666666" height="30"/>
                                 <color key="textColor" red="0.01254620962" green="0.70322984460000004" blue="0.89525538680000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVC-1M-YJY">
                                 <rect key="frame" x="351" y="20" width="52" height="32"/>
@@ -307,7 +307,7 @@ today?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYb-Xj-0Uq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2491" y="-47"/>
+            <point key="canvasLocation" x="3246" y="-47"/>
         </scene>
         <!--Secondary Map View Controller-->
         <scene sceneID="gRP-QQ-YPG">
@@ -334,7 +334,7 @@ today?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2m-oS-llm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3269.5652173913045" y="-47.282608695652179"/>
+            <point key="canvasLocation" x="2490" y="315"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bRS-c4-cWC">

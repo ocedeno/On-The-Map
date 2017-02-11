@@ -36,7 +36,6 @@ class LocationListViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
-                print("Finisehd refreshing")
             }
         }
 
@@ -70,7 +69,6 @@ class LocationListViewController: UITableViewController {
             let row = indexPath?.row
             let controller = segue.destination as? SecondaryMapViewController
             controller?.row = row!
-            print("Prepare for Segue")
         }
     }
     

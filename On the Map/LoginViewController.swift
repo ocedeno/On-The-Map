@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
     
     //MARK: Declare Variables/Constants
     
@@ -25,8 +25,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         
+        userEmailAddress.delegate = self
+        userPassword.delegate = self
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(LoginViewController.dismissKeyboard)))
+        
         //MARK: Padding TextFields
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.userPassword.frame.height))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.userPassword.frame.height))
         
         userEmailAddress.leftView = paddingView
         userPassword.leftView = paddingView
@@ -44,7 +48,17 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         populateData { (result, error) in
             
         }
-        
+    }
+    
+    func dismissKeyboard(){
+        userPassword.resignFirstResponder()
+        userEmailAddress.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userPassword.resignFirstResponder()
+        userEmailAddress.resignFirstResponder()
+        return true
     }
     
     func getFBData(){
