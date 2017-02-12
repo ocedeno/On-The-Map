@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class SecondaryMapViewController: UIViewController {
-
+    
     @IBOutlet var secondaryMapView: MKMapView!
     let mapClient = MapClient()
     var row = 0
@@ -24,7 +24,7 @@ class SecondaryMapViewController: UIViewController {
     func initializeView() {
         
         let studArray = DataModelObject.sharedInstance().studArray[row]
-
+        
         mapClient.centralizeLocations(lat: studArray.lat, lon: studArray.long, mapView: secondaryMapView)
         let annotation = MKPointAnnotation()
         annotation.title = "\(studArray.firstName) \(studArray.lastName)"

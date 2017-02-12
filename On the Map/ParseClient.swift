@@ -18,7 +18,7 @@ class ParseClient {
     func sendError(_ errorMessage: String) {
         print("\(errorMessage)")
     }
-
+    
     //MARK: Task for Session
     
     func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: [[String: AnyObject]]?, _ error: NSError?) -> Void) {
@@ -34,7 +34,7 @@ class ParseClient {
             
             // GUARD: Response Error Check (Login Verified)
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-               
+                
                 self.sendError("***Your request returned a status code other than 2xx! \(response!)")
                 return
             }
@@ -77,7 +77,7 @@ class ParseClient {
         return Singleton.sharedInstance
     }
     
-    //MARK: Escaping ASCII Characters 
+    //MARK: Escaping ASCII Characters
     func escapedParameters (_ parameters: [String:String]) -> URL {
         
         var components = URLComponents()

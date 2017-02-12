@@ -23,7 +23,7 @@ class UdacityClient: NSObject {
     //MARK: Task for Session
     
     func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
-     
+        
         //MARK: Starting Session
         let task = appDelegate.session.dataTask(with: request as URLRequest) { (data, response, error) in
             
@@ -48,7 +48,7 @@ class UdacityClient: NSObject {
                 
                 return
             }
-
+            
             self.convertDataWithCompletionHandler(data, completionHandler: completionHandler)
             
         }

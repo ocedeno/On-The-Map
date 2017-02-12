@@ -20,13 +20,13 @@ class LocationListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let controller = parent as! TabBarViewController
-//        mapVC = controller.viewControllers?[0] as! MapViewController
+        //        let controller = parent as! TabBarViewController
+        //        mapVC = controller.viewControllers?[0] as! MapViewController
         self.refreshControl?.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
     }
     
     func handleRefresh (_ sender: AnyObject) {
-
+        
         refreshTableView()
     }
     
@@ -38,7 +38,7 @@ class LocationListViewController: UITableViewController {
                 self.refreshControl?.endRefreshing()
             }
         }
-
+        
     }
     
     // MARK: - Table view data source
@@ -73,7 +73,7 @@ class LocationListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         self.performSegue(withIdentifier: "SecondaryMapViewSegue", sender: indexPath)
     }
     

@@ -40,8 +40,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapClient.updateStudentLocations(mapView: DataModelObject.sharedInstance().universalMapView, result: DataModelObject.sharedInstance().studArray)
     }
     
-    
-    //MARK:
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"

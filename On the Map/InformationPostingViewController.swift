@@ -25,7 +25,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     
     var mapClient = MapClient()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
