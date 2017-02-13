@@ -12,87 +12,67 @@ import Foundation
 
 class UdacityClient: NSObject {
     
-    // MARK: Properties
-    
-    //shared session
-    var session = URLSession.shared
-    
-    //authentication state
-    var sessionID : String? = nil
-    
     //MARK: Initializers
     
     override init() {
         super.init()
     }
     
-    //MARK: POST
+    var appDelegate = AppDelegate()
     
-    func taskForUdacityAuthentication(_ method: String, parameters: [String: String], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
-     
-        //MARK: Setting Parameters
-        UdacityClient.MethodParameters.Username = parameters["username"]
-        UdacityClient.MethodParameters.UserPassword = parameters["password"]
+    //MARK: Task for Session
+    
+    func taskForSession(request: NSMutableURLRequest, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
-        //MARK: Building URL, Configuring Request
-        let url = URL(string: UdacityClient.MethodKeys.NewSession)!
-        
-        let request = NSMutableURLRequest(url: url)
-        request.httpMethod = method
-        request.addValue(UdacityClient.RequestValues.AppJSON, forHTTPHeaderField: UdacityClient.RequestValues.AcceptHeader)
-        request.addValue(UdacityClient.RequestValues.AppJSON, forHTTPHeaderField: UdacityClient.RequestValues.ContentTypeHeader)
-        request.httpBody = jsonBody.data(using: .utf8)
-        print(jsonBody)
-        
-        //MARK: Making Request
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            
-            //MARK: Error Handling
-            func sendError(_ error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForPOST(nil, NSError(domain: "taskForUdacityAuthentication", code: 1, userInfo: userInfo))
-            }
+        //MARK: Starting Session
+        let task = appDelegate.session.dataTask(with: request as URLRequest) { (data, response, error) in
             
             //GUARD: Handling Error Return
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error!)")
+                
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo:  [NSLocalizedDescriptionKey:"There was an error with your request: \(error!)"]))
+                
                 return
             }
             
             // GUARD: Response Error Check
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx! \(response!)")
+                
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"Incorrect Login Credentials. Please Try Again."]))
                 return
             }
             
             // GUARD: Data Error Check
             guard let data = data else {
-                sendError("No data was returned by the request!")
+                
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"No data was returned by the request! Try again later."]))
+                
                 return
             }
-
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            
+            self.convertDataWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
         task.resume()
-        return task
     }
     
     //Convert JSON Completion Handler
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    private func convertDataWithCompletionHandler(_ data: Data, completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         
-        var parsedResult: AnyObject!
+        var parsedResult: AnyObject?
         do {
-            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+            
+            let range = Range(uncheckedBounds: (5, data.count))
+            let newData = data.subdata(in: range)
+            parsedResult = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject?
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
-            print("Data converting found an error")
+            print("Data converting found an error.\(NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))")
         }
-
-        completionHandlerForConvertData(parsedResult, nil)
-
+        
+        let userInfoDictionary = parsedResult as! [String:AnyObject]
+        
+        completionHandler(userInfoDictionary, nil)
     }
     
     //MARK: Shared Instance

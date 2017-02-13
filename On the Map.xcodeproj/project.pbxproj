@@ -7,16 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0611FCAA1E4CBCA7007D1B00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCA91E4CBCA7007D1B00 /* Main.storyboard */; };
+		0611FCAE1E4CC509007D1B00 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCAB1E4CC509007D1B00 /* Roboto-Medium.ttf */; };
+		0611FCAF1E4CC509007D1B00 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCAC1E4CC509007D1B00 /* Roboto-Regular.ttf */; };
+		0611FCB01E4CC509007D1B00 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0611FCAD1E4CC509007D1B00 /* Roboto-Thin.ttf */; };
+		0612BCF61E2BD6D7004A65D6 /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCF51E2BD6D7004A65D6 /* LocationListViewController.swift */; };
+		0612BCF81E2C07DB004A65D6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCF71E2C07DB004A65D6 /* MapViewController.swift */; };
+		0612BCFB1E2C0FAF004A65D6 /* MapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCFA1E2C0FAF004A65D6 /* MapClient.swift */; };
+		0612BCFF1E2C2268004A65D6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0612BCFE1E2C2268004A65D6 /* TabBarViewController.swift */; };
+		0645D0831E44CE65009B57B8 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0645D0821E44CE65009B57B8 /* StudentInformation.swift */; };
+		0662A0471E1C06C40065E1D7 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0662A0461E1C06C40065E1D7 /* UdacityConvenience.swift */; };
+		06874AA21E4B7090001CC184 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06874AA11E4B7090001CC184 /* Utility.swift */; };
+		06874AA51E4B770B001CC184 /* DataModelObjectClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06874AA41E4B770B001CC184 /* DataModelObjectClass.swift */; };
 		06B3EAD71E09C3A7004B0567 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */; };
 		06B3EAD91E09C3A7004B0567 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAD81E09C3A7004B0567 /* LoginViewController.swift */; };
-		06B3EADC1E09C3A8004B0567 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EADA1E09C3A8004B0567 /* Main.storyboard */; };
 		06B3EADE1E09C3A8004B0567 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EADD1E09C3A8004B0567 /* Assets.xcassets */; };
 		06B3EAE11E09C3A8004B0567 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EADF1E09C3A8004B0567 /* LaunchScreen.storyboard */; };
 		06B3EAEC1E09C3A8004B0567 /* On_the_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAEB1E09C3A8004B0567 /* On_the_MapTests.swift */; };
 		06B3EAF71E09C3A8004B0567 /* On_the_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B3EAF61E09C3A8004B0567 /* On_the_MapUITests.swift */; };
 		06B3EB121E09CE9E004B0567 /* on the map assets in Resources */ = {isa = PBXBuildFile; fileRef = 06B3EB111E09CE9E004B0567 /* on the map assets */; };
-		06EFCFE51E13F7E400EEE0FE /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFCFE41E13F7E400EEE0FE /* ErrorHandling.swift */; };
-		06FE2B951E09ED64005082BA /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FE2B941E09ED64005082BA /* UdacityConstants.swift */; };
+		06DB597F1E4E3B0800D120F1 /* SecondaryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB597E1E4E3B0800D120F1 /* SecondaryMapViewController.swift */; };
+		06EF07AE1E48DE44008ACC53 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EF07AD1E48DE44008ACC53 /* InformationPostingViewController.swift */; };
+		06F52A3E1E1F19CA00D314F6 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */; };
+		06F52A421E2013FC00D314F6 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A411E2013FC00D314F6 /* ParseConstants.swift */; };
+		06F52A441E20294500D314F6 /* ParseConveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F52A431E20294500D314F6 /* ParseConveniences.swift */; };
+		06F92ADE1E4373D900D1A0B1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C021E25D3B2009A035B /* Bolts.framework */; };
+		06F92ADF1E4373D900D1A0B1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C041E25D411009A035B /* FBSDKCoreKit.framework */; };
+		06F92AE01E4373D900D1A0B1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C051E25D411009A035B /* FBSDKLoginKit.framework */; };
+		06F92AE11E4373EB00D1A0B1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C041E25D411009A035B /* FBSDKCoreKit.framework */; };
+		06F92AE21E4373EB00D1A0B1 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C041E25D411009A035B /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06F92AE31E4373EB00D1A0B1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C051E25D411009A035B /* FBSDKLoginKit.framework */; };
+		06F92AE41E4373EB00D1A0B1 /* FBSDKLoginKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C051E25D411009A035B /* FBSDKLoginKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06F92AE51E4373EB00D1A0B1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C021E25D3B2009A035B /* Bolts.framework */; };
+		06F92AE61E4373EB00D1A0B1 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06020C021E25D3B2009A035B /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		06FE2B971E09ED9A005082BA /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FE2B961E09ED9A005082BA /* UdacityClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,11 +60,41 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		06F92AE71E4373EB00D1A0B1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				06F92AE61E4373EB00D1A0B1 /* Bolts.framework in Embed Frameworks */,
+				06F92AE41E4373EB00D1A0B1 /* FBSDKLoginKit.framework in Embed Frameworks */,
+				06F92AE21E4373EB00D1A0B1 /* FBSDKCoreKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		06020C021E25D3B2009A035B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
+		06020C041E25D411009A035B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Carthage/Build/iOS/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		06020C051E25D411009A035B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Carthage/Build/iOS/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		0611FCA91E4CBCA7007D1B00 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0611FCAB1E4CC509007D1B00 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		0611FCAC1E4CC509007D1B00 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		0611FCAD1E4CC509007D1B00 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "../Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		0612BCF51E2BD6D7004A65D6 /* LocationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
+		0612BCF71E2C07DB004A65D6 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0612BCFA1E2C0FAF004A65D6 /* MapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapClient.swift; sourceTree = "<group>"; };
+		0612BCFE1E2C2268004A65D6 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0645D0821E44CE65009B57B8 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		0662A0461E1C06C40065E1D7 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
+		06874AA11E4B7090001CC184 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		06874AA41E4B770B001CC184 /* DataModelObjectClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModelObjectClass.swift; sourceTree = "<group>"; };
 		06B3EAD31E09C3A7004B0567 /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06B3EAD81E09C3A7004B0567 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		06B3EADB1E09C3A8004B0567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06B3EADD1E09C3A8004B0567 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06B3EAE01E09C3A8004B0567 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06B3EAE21E09C3A8004B0567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,8 +105,11 @@
 		06B3EAF61E09C3A8004B0567 /* On_the_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_the_MapUITests.swift; sourceTree = "<group>"; };
 		06B3EAF81E09C3A8004B0567 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06B3EB111E09CE9E004B0567 /* on the map assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "on the map assets"; sourceTree = "<group>"; };
-		06EFCFE41E13F7E400EEE0FE /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
-		06FE2B941E09ED64005082BA /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		06DB597E1E4E3B0800D120F1 /* SecondaryMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryMapViewController.swift; sourceTree = "<group>"; };
+		06EF07AD1E48DE44008ACC53 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		06F52A411E2013FC00D314F6 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		06F52A431E20294500D314F6 /* ParseConveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConveniences.swift; sourceTree = "<group>"; };
 		06FE2B961E09ED9A005082BA /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +118,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F92ADE1E4373D900D1A0B1 /* Bolts.framework in Frameworks */,
+				06F92AE11E4373EB00D1A0B1 /* FBSDKCoreKit.framework in Frameworks */,
+				06F92AE31E4373EB00D1A0B1 /* FBSDKLoginKit.framework in Frameworks */,
+				06F92AE51E4373EB00D1A0B1 /* Bolts.framework in Frameworks */,
+				06F92ADF1E4373D900D1A0B1 /* FBSDKCoreKit.framework in Frameworks */,
+				06F92AE01E4373D900D1A0B1 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +144,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0612BCF91E2C0FA1004A65D6 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				0612BCFA1E2C0FAF004A65D6 /* MapClient.swift */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
+		06874AA31E4B7096001CC184 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				06874AA11E4B7090001CC184 /* Utility.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		06B3EACA1E09C3A7004B0567 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +167,7 @@
 				06B3EAEA1E09C3A8004B0567 /* On the MapTests */,
 				06B3EAF51E09C3A8004B0567 /* On the MapUITests */,
 				06B3EAD41E09C3A7004B0567 /* Products */,
+				06EF0A841E2072080061E3B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,11 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				06B3EAD61E09C3A7004B0567 /* AppDelegate.swift */,
-				06EFCFE41E13F7E400EEE0FE /* ErrorHandling.swift */,
+				06874AA31E4B7096001CC184 /* Utility */,
 				06B3EB071E09C495004B0567 /* Model */,
-				06B3EB081E09C49B004B0567 /* View */,
 				06B3EB061E09C470004B0567 /* Controller */,
-				06B3EB051E09C443004B0567 /* Assets */,
 				06B3EB041E09C42C004B0567 /* Supporting Files */,
 			);
 			path = "On the Map";
@@ -137,6 +214,7 @@
 		06B3EB041E09C42C004B0567 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06B3EB051E09C443004B0567 /* Assets */,
 				06B3EAE21E09C3A8004B0567 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -146,8 +224,11 @@
 			isa = PBXGroup;
 			children = (
 				06B3EADF1E09C3A8004B0567 /* LaunchScreen.storyboard */,
-				06B3EADA1E09C3A8004B0567 /* Main.storyboard */,
+				0611FCA91E4CBCA7007D1B00 /* Main.storyboard */,
 				06B3EADD1E09C3A8004B0567 /* Assets.xcassets */,
+				0611FCAB1E4CC509007D1B00 /* Roboto-Medium.ttf */,
+				0611FCAC1E4CC509007D1B00 /* Roboto-Regular.ttf */,
+				0611FCAD1E4CC509007D1B00 /* Roboto-Thin.ttf */,
 				06B3EB111E09CE9E004B0567 /* on the map assets */,
 			);
 			name = Assets;
@@ -157,6 +238,11 @@
 			isa = PBXGroup;
 			children = (
 				06B3EAD81E09C3A7004B0567 /* LoginViewController.swift */,
+				0612BCF51E2BD6D7004A65D6 /* LocationListViewController.swift */,
+				0612BCF71E2C07DB004A65D6 /* MapViewController.swift */,
+				0612BCFE1E2C2268004A65D6 /* TabBarViewController.swift */,
+				06EF07AD1E48DE44008ACC53 /* InformationPostingViewController.swift */,
+				06DB597E1E4E3B0800D120F1 /* SecondaryMapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -165,23 +251,28 @@
 			isa = PBXGroup;
 			children = (
 				06FE2B911E09ED01005082BA /* Clients */,
+				0645D0821E44CE65009B57B8 /* StudentInformation.swift */,
+				06874AA41E4B770B001CC184 /* DataModelObjectClass.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		06B3EB081E09C49B004B0567 /* View */ = {
+		06EF0A841E2072080061E3B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06020C041E25D411009A035B /* FBSDKCoreKit.framework */,
+				06020C051E25D411009A035B /* FBSDKLoginKit.framework */,
+				06020C021E25D3B2009A035B /* Bolts.framework */,
 			);
-			name = View;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		06FE2B911E09ED01005082BA /* Clients */ = {
 			isa = PBXGroup;
 			children = (
+				0612BCF91E2C0FA1004A65D6 /* MapView */,
 				06FE2B981E09EE00005082BA /* Parse */,
 				06FE2B921E09ED06005082BA /* Udacity */,
-				06FE2B931E09ED10005082BA /* Facebook */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -189,22 +280,18 @@
 		06FE2B921E09ED06005082BA /* Udacity */ = {
 			isa = PBXGroup;
 			children = (
-				06FE2B941E09ED64005082BA /* UdacityConstants.swift */,
 				06FE2B961E09ED9A005082BA /* UdacityClient.swift */,
+				0662A0461E1C06C40065E1D7 /* UdacityConvenience.swift */,
 			);
 			name = Udacity;
-			sourceTree = "<group>";
-		};
-		06FE2B931E09ED10005082BA /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Facebook;
 			sourceTree = "<group>";
 		};
 		06FE2B981E09EE00005082BA /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				06F52A3D1E1F19CA00D314F6 /* ParseClient.swift */,
+				06F52A431E20294500D314F6 /* ParseConveniences.swift */,
+				06F52A411E2013FC00D314F6 /* ParseConstants.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -219,6 +306,8 @@
 				06B3EACF1E09C3A7004B0567 /* Sources */,
 				06B3EAD01E09C3A7004B0567 /* Frameworks */,
 				06B3EAD11E09C3A7004B0567 /* Resources */,
+				06020C0C1E25D4EE009A035B /* ShellScript */,
+				06F92AE71E4373EB00D1A0B1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -319,10 +408,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0611FCAE1E4CC509007D1B00 /* Roboto-Medium.ttf in Resources */,
+				0611FCAF1E4CC509007D1B00 /* Roboto-Regular.ttf in Resources */,
+				0611FCB01E4CC509007D1B00 /* Roboto-Thin.ttf in Resources */,
 				06B3EB121E09CE9E004B0567 /* on the map assets in Resources */,
 				06B3EAE11E09C3A8004B0567 /* LaunchScreen.storyboard in Resources */,
 				06B3EADE1E09C3A8004B0567 /* Assets.xcassets in Resources */,
-				06B3EADC1E09C3A8004B0567 /* Main.storyboard in Resources */,
+				0611FCAA1E4CBCA7007D1B00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,16 +434,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06020C0C1E25D4EE009A035B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKLoginKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBSDKCoreKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		06B3EACF1E09C3A7004B0567 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06EFCFE51E13F7E400EEE0FE /* ErrorHandling.swift in Sources */,
+				06DB597F1E4E3B0800D120F1 /* SecondaryMapViewController.swift in Sources */,
+				06874AA21E4B7090001CC184 /* Utility.swift in Sources */,
+				0645D0831E44CE65009B57B8 /* StudentInformation.swift in Sources */,
+				0612BCFB1E2C0FAF004A65D6 /* MapClient.swift in Sources */,
 				06FE2B971E09ED9A005082BA /* UdacityClient.swift in Sources */,
+				0612BCF61E2BD6D7004A65D6 /* LocationListViewController.swift in Sources */,
+				06EF07AE1E48DE44008ACC53 /* InformationPostingViewController.swift in Sources */,
 				06B3EAD91E09C3A7004B0567 /* LoginViewController.swift in Sources */,
+				0612BCFF1E2C2268004A65D6 /* TabBarViewController.swift in Sources */,
+				0612BCF81E2C07DB004A65D6 /* MapViewController.swift in Sources */,
 				06B3EAD71E09C3A7004B0567 /* AppDelegate.swift in Sources */,
-				06FE2B951E09ED64005082BA /* UdacityConstants.swift in Sources */,
+				0662A0471E1C06C40065E1D7 /* UdacityConvenience.swift in Sources */,
+				06F52A3E1E1F19CA00D314F6 /* ParseClient.swift in Sources */,
+				06F52A441E20294500D314F6 /* ParseConveniences.swift in Sources */,
+				06874AA51E4B770B001CC184 /* DataModelObjectClass.swift in Sources */,
+				06F52A421E2013FC00D314F6 /* ParseConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,14 +509,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		06B3EADA1E09C3A8004B0567 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				06B3EADB1E09C3A8004B0567 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		06B3EADF1E09C3A8004B0567 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -502,6 +616,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HC236JEG46;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cedeno-Enterprises-Inc.On-the-Map";
@@ -515,6 +633,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HC236JEG46;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Cedeno-Enterprises-Inc.On-the-Map";
