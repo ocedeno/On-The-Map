@@ -19,10 +19,7 @@ class TabBarViewController: UITabBarController {
     
     @IBAction func logoutPressed() {
         
-        DispatchQueue.main.async {
-            let controller = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
-            self.present(controller, animated: true, completion: nil)
-        }
+        dismiss(animated: true, completion: nil)
         
         udacClient.udacityLogoutRequest { (result, error) in
             
@@ -44,6 +41,12 @@ class TabBarViewController: UITabBarController {
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
         
         LoginViewController.sharedInstance().populateData { (result, error) in
+            
+            guard error == nil else{
+                self.displayError(title: "Error Refreshing Data", message: (error?.localizedDescription)!)
+                return
+            }
+            
             DispatchQueue.main.async {
                 let mapVC = self.viewControllers?[0] as? MapViewController
                 mapVC?.updateMapLocations()

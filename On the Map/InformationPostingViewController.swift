@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class InformationPostingViewController: UIViewController, UITextFieldDelegate {
+class InformationPostingViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
     
     
     //MARK: IBOutlets
@@ -23,14 +23,14 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userCurrentLocation: UITextField!
     @IBOutlet weak var userMediaURL: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var mapClient = MapClient()
+    let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        mapView.delegate = self
         userCurrentLocation.delegate = self
         userMediaURL.delegate = self
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector (InformationPostingViewController.dismissKeyboard)))
@@ -48,6 +48,24 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func showActivityIndicatory(uiView: UIView) {
+        actInd.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        actInd.center = uiView.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.whiteLarge
+        uiView.addSubview(actInd)
+        actInd.startAnimating()
+    }
+    
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        
+        if fullyRendered {
+            actInd.stopAnimating()
+        }
+        
+    }
+    
     //MARK: IBActions
     
     @IBAction func actionButton(_ sender: UIButton) {
@@ -60,10 +78,10 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         
         if actionButton.titleLabel?.text == " Find on the Map " {
             
-            activityIndicator.startAnimating()
+            showActivityIndicatory(uiView: self.view)
             mapViewSettings(location: userCurrentLocation.text!, mapView: mapView)
             
-        } else {
+        }else {
             
             guard (userMediaURL?.text != "") else {
                 self.displayError(title: "Error", message: "Please add a Media URL")
@@ -76,6 +94,12 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                 
                 LoginViewController.sharedInstance().populateData(completionHandler: { (result, error) in
                     
+                    guard error == nil else {
+                        
+                        self.displayError(title: "Error: Submitting Location.", message: (error?.localizedDescription)!)
+                        return
+                    }
+                    
                     DispatchQueue.main.async {
                         self.cancelAction()
                         MapViewController.sharedInstance().updateMapLocations()
@@ -84,10 +108,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                 })
                 
             }))
-            
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
     
     //MARK: Method for Resetting Views
@@ -115,7 +137,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         mapClient.forwardGeocoding(address: location,
                                    mapView: mapView,
                                    viewController: self)
-        activityIndicator.stopAnimating()
+        
     }
     
     //MARK: Method for Submitting User Location

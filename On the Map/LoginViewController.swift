@@ -95,6 +95,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
+        guard error == nil else {
+            displayError(title: "Error: Facebook Login", message: "There was an issue logging you through Facebook. Please try again later.")
+            sendError(message: error.localizedDescription)
+            return
+        }
+        
         navigateToViewController(viewcontroller: mainNavController)
         getFBData()
     }
@@ -122,7 +128,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             
             guard (result != nil), (error == nil) else {
                 self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
-                self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
+                self.displayError(title: "Udacity Login Issue", message: (error?.localizedDescription)!)
+                
                 return
             }
             
