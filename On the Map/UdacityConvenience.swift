@@ -20,7 +20,7 @@ extension UdacityClient {
         
         taskForSession(request: request, completionHandler: completionHandler)
     }
-    
+        
     //MARK: Building Request for Udacity Logout
     func udacityLogoutRequest(completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
         

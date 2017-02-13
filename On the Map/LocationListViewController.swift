@@ -56,7 +56,6 @@ class LocationListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
         cell.textLabel?.text = ("\(studentArray[indexPath.row].firstName) \(studentArray[indexPath.row].lastName)")
         
         return cell
@@ -83,6 +82,7 @@ class LocationListViewController: UITableViewController {
         guard (mediaURL != "") else{
             print("\(mediaURL)")
             displayError(title: "Media URL", message: "Sorry, the user did not provide a Media URL.")
+            
             return
         }
         

@@ -62,8 +62,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
             mapViewSettings(location: userCurrentLocation.text!, mapView: mapView)
             
         } else {
-            //Do submission action
-            guard (userMediaURL.text != nil) else {
+            
+            guard (userMediaURL?.text != "") else {
                 self.displayError(title: "Error", message: "Please add a Media URL")
                 return
             }

@@ -23,7 +23,7 @@ class Utility {
         }
         return Singleton.sharedInstance
     }
-
+    
 }
 
 extension UIViewController {

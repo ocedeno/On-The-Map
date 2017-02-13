@@ -50,17 +50,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         }
     }
     
-    func dismissKeyboard(){
-        userPassword.resignFirstResponder()
-        userEmailAddress.resignFirstResponder()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        userPassword.resignFirstResponder()
-        userEmailAddress.resignFirstResponder()
-        return true
-    }
-    
     func getFBData(){
         
         //MARK: Graph Request for Facebook
@@ -163,6 +152,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     @IBAction func createAccountButton() {
         
         UIApplication.shared.open(URL(string: "https://www.udacity.com/account/auth#!/signup")!)
+    }
+    
+    func dismissKeyboard(){
+        userPassword.resignFirstResponder()
+        userEmailAddress.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userPassword.resignFirstResponder()
+        userEmailAddress.resignFirstResponder()
+        return true
     }
     
     //MARK: Shared Instance
