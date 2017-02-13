@@ -30,13 +30,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(true)
+        
         LoginViewController.sharedInstance().populateData { (result, error) in
-            
         }
     }
     
     func updateMapLocations() {
+        
         mapClient.updateStudentLocations(mapView: DataModelObject.sharedInstance().universalMapView, result: DataModelObject.sharedInstance().studArray)
     }
     

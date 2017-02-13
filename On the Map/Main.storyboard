@@ -53,7 +53,7 @@
                                                 <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="0.50481592465753422" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KkN-8U-ebb">
                                                 <rect key="frame" x="0.0" y="112" width="374" height="36"/>
@@ -271,6 +271,9 @@ today?</string>
                                     <action selector="cancelAction" destination="nRJ-yI-WRa" eventType="touchUpInside" id="HOw-Xe-NPJ"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="zDO-Nh-NQW">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.01254620962" green="0.70322984460000004" blue="0.89525538680000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -284,18 +287,22 @@ today?</string>
                             <constraint firstItem="SY2-kF-tKQ" firstAttribute="top" secondItem="Pks-2p-mo6" secondAttribute="top" id="VBk-Yo-iMh"/>
                             <constraint firstItem="qFf-Qh-LtR" firstAttribute="top" secondItem="Exv-bW-TtA" secondAttribute="bottom" constant="-2" id="XO5-OA-hRV"/>
                             <constraint firstItem="ut4-Su-ChR" firstAttribute="centerX" secondItem="Pks-2p-mo6" secondAttribute="centerX" id="aec-1a-0Ea"/>
+                            <constraint firstItem="zDO-Nh-NQW" firstAttribute="centerY" secondItem="Pks-2p-mo6" secondAttribute="centerY" id="cvX-NC-OXN"/>
                             <constraint firstItem="QtJ-35-KEL" firstAttribute="centerY" secondItem="Exv-bW-TtA" secondAttribute="centerY" id="fXc-8v-Tzt"/>
                             <constraint firstItem="qFf-Qh-LtR" firstAttribute="leading" secondItem="Pks-2p-mo6" secondAttribute="leading" id="kcY-RB-jOA"/>
                             <constraint firstItem="oR6-j6-3LL" firstAttribute="top" secondItem="qFf-Qh-LtR" secondAttribute="bottom" id="kxq-4Q-ntP"/>
+                            <constraint firstItem="zDO-Nh-NQW" firstAttribute="centerX" secondItem="Pks-2p-mo6" secondAttribute="centerX" id="l1Q-Lc-Bv7"/>
                             <constraint firstItem="QtJ-35-KEL" firstAttribute="centerX" secondItem="Exv-bW-TtA" secondAttribute="centerX" id="rl6-dk-8UO"/>
                             <constraint firstItem="SY2-kF-tKQ" firstAttribute="leading" secondItem="Pks-2p-mo6" secondAttribute="leading" id="say-61-8RJ"/>
                             <constraint firstAttribute="trailing" secondItem="qFf-Qh-LtR" secondAttribute="trailing" id="tfD-ap-P0a"/>
+                            <constraint firstItem="zDO-Nh-NQW" firstAttribute="width" secondItem="Pks-2p-mo6" secondAttribute="height" multiplier="5:184" id="uPE-ds-6DS"/>
                             <constraint firstItem="ut4-Su-ChR" firstAttribute="centerY" secondItem="Pks-2p-mo6" secondAttribute="centerY" id="uqM-Dd-TfI"/>
                             <constraint firstItem="uJl-qU-z5e" firstAttribute="centerX" secondItem="MK7-H0-b9v" secondAttribute="centerX" id="woe-Pa-gcp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="uJl-qU-z5e" id="onR-c1-ATs"/>
+                        <outlet property="activityIndicator" destination="zDO-Nh-NQW" id="kzo-gt-2K4"/>
                         <outlet property="bottomImageView" destination="MK7-H0-b9v" id="ECI-Yi-673"/>
                         <outlet property="centerImageView" destination="w6j-rV-Qx9" id="mJu-5g-BKy"/>
                         <outlet property="mapView" destination="qFf-Qh-LtR" id="xbI-74-xxg"/>

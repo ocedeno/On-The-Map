@@ -134,7 +134,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 guard (results != nil), (error == nil) else {
                     DispatchQueue.main.async {
                         self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
-                        self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
+                        self.displayError(title: "Udacity Login Issue", message: (error?.localizedDescription)!)
                     }
                     return
                 }

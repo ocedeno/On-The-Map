@@ -23,16 +23,17 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userCurrentLocation: UITextField!
     @IBOutlet weak var userMediaURL: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var mapClient = MapClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         userCurrentLocation.delegate = self
         userMediaURL.delegate = self
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector (InformationPostingViewController.dismissKeyboard)))
-        
         initialViewSettings()
     }
     
@@ -59,6 +60,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         
         if actionButton.titleLabel?.text == " Find on the Map " {
             
+            activityIndicator.startAnimating()
             mapViewSettings(location: userCurrentLocation.text!, mapView: mapView)
             
         } else {
@@ -113,6 +115,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         mapClient.forwardGeocoding(address: location,
                                    mapView: mapView,
                                    viewController: self)
+        activityIndicator.stopAnimating()
     }
     
     //MARK: Method for Submitting User Location

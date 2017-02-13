@@ -31,20 +31,21 @@ class UdacityClient: NSObject {
             guard (error == nil) else {
                 
                 completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo:  [NSLocalizedDescriptionKey:"There was an error with your request: \(error!)"]))
+                
                 return
             }
             
             // GUARD: Response Error Check
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 
-                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"Your request returned a status code other than 2xx!"]))
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"Incorrect Login Credentials. Please Try Again."]))
                 return
             }
             
             // GUARD: Data Error Check
             guard let data = data else {
                 
-                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"No data was returned by the request!"]))
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"No data was returned by the request! Try again later."]))
                 
                 return
             }
