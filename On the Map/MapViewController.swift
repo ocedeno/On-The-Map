@@ -66,7 +66,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             if let toOpen = view.annotation?.subtitle! {
-                UIApplication.shared.open(URL(string: toOpen)!)
+                if let url = URL(string: toOpen) {
+                    if UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url)
+                    }else {
+                        DispatchQueue.main.async {
+                            print("Error MEDIA URL")
+                            self.displayError(title: "Media URL", message: "An Incorrect Media URL was provided.")
+                        }
+                    }
+                } else {
+                    
+                    DispatchQueue.main.async {
+                        print("Error MEDIA URL")
+                        self.displayError(title: "Media URL", message: "An Incorrect Media URL was provided.")
+                    }
+                }
             }
         }
     }

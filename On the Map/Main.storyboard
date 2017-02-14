@@ -94,16 +94,24 @@
                                     <constraint firstItem="GVR-rx-htE" firstAttribute="leading" secondItem="9pH-8u-GK6" secondAttribute="leading" id="dAm-3t-oPZ"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="52f-Lo-iBD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.01254620962" green="0.70322984460000004" blue="0.89525538680000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="52f-Lo-iBD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="AjJ-nS-A3r"/>
+                            <constraint firstItem="52f-Lo-iBD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D1k-zb-tKv"/>
+                            <constraint firstItem="52f-Lo-iBD" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="FuO-oS-qkd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9pH-8u-GK6" secondAttribute="bottom" id="LrA-3G-Mzc"/>
                             <constraint firstItem="9pH-8u-GK6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OjX-s2-6fs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9pH-8u-GK6" secondAttribute="trailing" id="nWu-s8-c8a"/>
+                            <constraint firstItem="52f-Lo-iBD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="xNU-so-Blv"/>
                             <constraint firstItem="9pH-8u-GK6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ycs-CT-xFa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actInd" destination="52f-Lo-iBD" id="W29-jy-XEB"/>
                         <outlet property="userEmailAddress" destination="Rfi-Lt-4f4" id="Glx-1L-FcG"/>
                         <outlet property="userPassword" destination="KkN-8U-ebb" id="6xH-ag-MeI"/>
                         <segue destination="U9F-CV-6Pq" kind="show" identifier="mainNavController" id="goE-6R-02p"/>

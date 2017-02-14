@@ -18,41 +18,11 @@ struct StudentInformation {
     
     init(userDict: [String: AnyObject]) {
         
-        if let x = userDict["firstName"] {
-            firstName = x as! String
-        } else {
-            print("No first name found")
-            firstName = " "
-        }
-        
-        if let x = userDict["lastName"] {
-            lastName = x as! String
-        } else {
-            print("No last name found")
-            lastName = " "
-        }
-        
-        if let x = userDict["mediaURL"] {
-            mediaURL = x as! String
-        } else {
-            print("No mediaURL found")
-            mediaURL = " "
-        }
-        
-        if let x = userDict["latitude"] {
-            lat = x as! Double
-        } else {
-            print("No latitude found")
-            lat = 0.0
-        }
-        
-        if let x = userDict["longitude"] {
-            long = x as! Double
-        } else{
-            print("No longitude found")
-            long = 0.0
-        }
-        
+        firstName = userDict["firstName"] as? String ?? ""
+        lastName = userDict["lastName"] as? String ?? ""
+        mediaURL = userDict["mediaURL"] as? String ?? ""
+        lat = userDict["latitude"] as? Double ?? 0.0
+        long = userDict["longitude"] as? Double ?? 0.0
     }
     
     static func convertStudentData (array: [[String: AnyObject]]) -> [StudentInformation] {

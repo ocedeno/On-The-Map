@@ -89,6 +89,21 @@ class LocationListViewController: UITableViewController {
             return
         }
         
-        UIApplication.shared.open(URL(string: mediaURL)!)
+        if let url = URL(string: mediaURL) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }else {
+                DispatchQueue.main.async {
+                    print("Error MEDIA URL")
+                    self.displayError(title: "Media URL", message: "An Incorrect Media URL was provided.")
+                }
+            }
+        } else {
+            
+            DispatchQueue.main.async {
+                print("Error MEDIA URL")
+                self.displayError(title: "Media URL", message: "An Incorrect Media URL was provided.")
+            }
+        }
     }
 }
