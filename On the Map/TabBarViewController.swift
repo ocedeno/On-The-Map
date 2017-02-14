@@ -16,13 +16,11 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("tabBar VDL")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        print("tabBar VWA")
     }
     
     @IBAction func logoutPressed() {
@@ -72,7 +70,8 @@ class TabBarViewController: UITabBarController {
             
             DispatchQueue.main.async {
                 
-                guard (result != nil), (error == nil) else {
+                guard (result != nil) || (error == nil) else {
+                    completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo:  [NSLocalizedDescriptionKey:"It appears you are not connected to the internet."]))
                     self.displayError(title: "Retrieving Data", message: "Could not retrieve student locations from Parse. Try again later.")
                     self.sendError(message: "Populating student data returned nil. Error:\(error)")
                     return

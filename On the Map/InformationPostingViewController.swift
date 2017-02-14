@@ -88,27 +88,30 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate, M
                 return
             }
             
-            submitUserLocation(mediaURL: userMediaURL.text!)
-            let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
+            TabBarViewController.sharedInstance().populateData(completionHandler: { (result, error) in
                 
-                TabBarViewController.sharedInstance().populateData(completionHandler: { (result, error) in
-                    
-                    guard error == nil else {
-                        
-                        self.displayError(title: "Error: Submitting Location.", message: (error?.localizedDescription)!)
-                        return
-                    }
+                guard error == nil else {
                     
                     DispatchQueue.main.async {
-                        self.cancelAction()
-                        MapViewController.sharedInstance().updateMapLocations()
-                        self.mapClient.centralizeLocations(lat: DataModelObject.sharedInstance().currentUserLat, lon: DataModelObject.sharedInstance().currentUserLon, mapView: DataModelObject.sharedInstance().universalMapView)
+                        
+                        self.displayError(title: "Error: Submitting Location.", message: (error?.localizedDescription)!)
+                        print("***Populate Data Error***")
                     }
-                })
+                    
+                    return
+                }
                 
-            }))
-            self.present(alert, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.cancelAction()
+                    self.submitUserLocation(mediaURL: self.userMediaURL.text!)
+                    MapViewController.sharedInstance().updateMapLocations()
+                    self.mapClient.centralizeLocations(lat: DataModelObject.sharedInstance().currentUserLat, lon: DataModelObject.sharedInstance().currentUserLon, mapView: DataModelObject.sharedInstance().universalMapView)
+                    let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
         }
     }
     
