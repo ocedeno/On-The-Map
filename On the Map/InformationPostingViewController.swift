@@ -92,7 +92,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate, M
             let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
                 
-                LoginViewController.sharedInstance().populateData(completionHandler: { (result, error) in
+                TabBarViewController.sharedInstance().populateData(completionHandler: { (result, error) in
                     
                     guard error == nil else {
                         

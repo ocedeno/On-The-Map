@@ -45,7 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         self.view.addSubview(loginButton)
         
         //MARK: Populating Data Model Object
-        populateData { (result, error) in
+        TabBarViewController.sharedInstance().populateData { (result, error) in
             
         }
     }
@@ -67,27 +67,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             let currentUserID = userData["id"]
             DataModelObject.sharedInstance().userInfo = userData
             DataModelObject.sharedInstance().currentUserKeyID = currentUserID as! String?
-        }
-    }
-    
-    //Method to populate the student array in App Delegate
-    
-    func populateData(completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void){
-        
-        ParseClient.sharedInstance().getStudentLocations(limit: 100) { (result, error) in
-            
-            DispatchQueue.main.async {
-                
-                guard (result != nil), (error == nil) else {
-                    self.displayError(title: "Retrieving Data", message: "Could not retrieve student locations from Parse. Try again later.")
-                    self.sendError(message: "Populating student data returned nil. Error:\(error)")
-                    return
-                }
-                
-                DataModelObject.sharedInstance().studArray = StudentInformation.convertStudentData(array: result!)
-                completionHandler(nil, nil)
-                
-            }
         }
     }
     

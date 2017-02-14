@@ -15,6 +15,14 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("tabBar VDL")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        print("tabBar VWA")
     }
     
     @IBAction func logoutPressed() {
@@ -41,7 +49,7 @@ class TabBarViewController: UITabBarController {
     
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
         
-        LoginViewController.sharedInstance().populateData { (result, error) in
+        populateData { (result, error) in
             
             guard error == nil else{
                 self.displayError(title: "Error Refreshing Data", message: (error?.localizedDescription)!)
@@ -56,6 +64,25 @@ class TabBarViewController: UITabBarController {
             }
         }
         
+    }
+    
+    func populateData(completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void){
+        
+        ParseClient.sharedInstance().getStudentLocations(limit: 100) { (result, error) in
+            
+            DispatchQueue.main.async {
+                
+                guard (result != nil), (error == nil) else {
+                    self.displayError(title: "Retrieving Data", message: "Could not retrieve student locations from Parse. Try again later.")
+                    self.sendError(message: "Populating student data returned nil. Error:\(error)")
+                    return
+                }
+                
+                DataModelObject.sharedInstance().studArray = StudentInformation.convertStudentData(array: result!)
+                completionHandler(nil, nil)
+                
+            }
+        }
     }
     
     //MARK: Shared Instance

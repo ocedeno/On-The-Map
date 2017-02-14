@@ -26,14 +26,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         DataModelObject.sharedInstance().universalMapView = mapView
         locationManager.delegate = self
         self.mapClient.updateCurrentLocation(locationManager: locationManager, mapView: DataModelObject.sharedInstance().universalMapView)
-        updateMapLocations()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
         
-        LoginViewController.sharedInstance().populateData { (result, error) in
+        TabBarViewController.sharedInstance().populateData { (result, error) in
+            self.updateMapLocations()
         }
     }
     

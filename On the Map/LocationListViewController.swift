@@ -32,7 +32,7 @@ class LocationListViewController: UITableViewController {
     
     func refreshTableView(){
         
-        LoginViewController.sharedInstance().populateData { (result, error) in
+        TabBarViewController.sharedInstance().populateData { (result, error) in
             
             guard error == nil else {
                 
