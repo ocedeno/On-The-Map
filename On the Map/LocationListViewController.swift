@@ -12,7 +12,7 @@ class LocationListViewController: UITableViewController {
     
     //MARK: variables/constants
     
-    let studentArray = DataModelObject.sharedInstance().studArray
+    var studentArray = DataModelObject.sharedInstance().studArray
     let mapClient = MapClient()
     var mapVC = MapViewController()
     let controller = SecondaryMapViewController()
@@ -32,8 +32,16 @@ class LocationListViewController: UITableViewController {
     
     func refreshTableView(){
         
-        LoginViewController.sharedInstance().populateData { (result, error) in
+        TabBarViewController.sharedInstance().populateData { (result, error) in
+            
+            guard error == nil else {
+                
+                self.displayError(title: "Error: Refreshing", message: (error?.localizedDescription)!)
+                return
+            }
+            
             DispatchQueue.main.async {
+                self.studentArray = DataModelObject.sharedInstance().studArray
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
@@ -42,11 +50,6 @@ class LocationListViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

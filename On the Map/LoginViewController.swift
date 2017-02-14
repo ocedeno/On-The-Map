@@ -45,7 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         self.view.addSubview(loginButton)
         
         //MARK: Populating Data Model Object
-        populateData { (result, error) in
+        TabBarViewController.sharedInstance().populateData { (result, error) in
             
         }
     }
@@ -70,30 +70,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         }
     }
     
-    //Method to populate the student array in App Delegate
-    
-    func populateData(completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void){
-        
-        ParseClient.sharedInstance().getStudentLocations(limit: 100) { (result, error) in
-            
-            DispatchQueue.main.async {
-                
-                guard (result != nil), (error == nil) else {
-                    self.displayError(title: "Retrieving Data", message: "Could not retrieve student locations from Parse. Try again later.")
-                    self.sendError(message: "Populating student data returned nil. Error:\(error)")
-                    return
-                }
-                
-                DataModelObject.sharedInstance().studArray = StudentInformation.convertStudentData(array: result!)
-                completionHandler(nil, nil)
-                
-            }
-        }
-    }
-    
     //MARK: Method - Facebook Login/Logout
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        guard error == nil else {
+            displayError(title: "Error: Facebook Login", message: "There was an issue logging you through Facebook. Please try again later.")
+            sendError(message: error.localizedDescription)
+            return
+        }
         
         navigateToViewController(viewcontroller: mainNavController)
         getFBData()
@@ -122,7 +107,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             
             guard (result != nil), (error == nil) else {
                 self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
-                self.displayError(title: "Udacity Login Issue", message: "Your login credentials are incorrect. Try again.")
+                self.displayError(title: "Udacity Login Issue", message: (error?.localizedDescription)!)
+                
                 return
             }
             

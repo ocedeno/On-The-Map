@@ -31,7 +31,7 @@ class UdacityClient: NSObject {
             guard (error == nil) else {
                 
                 completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo:  [NSLocalizedDescriptionKey:"There was an error with your request: \(error!)"]))
-                
+                    
                 return
             }
             
@@ -39,14 +39,15 @@ class UdacityClient: NSObject {
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 
                 completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"Incorrect Login Credentials. Please Try Again."]))
+                
                 return
             }
             
             // GUARD: Data Error Check
             guard let data = data else {
                 
-                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey:"No data was returned by the request! Try again later."]))
-                
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey: "It appears you are not online. Please connect to the internet, and try again."]))
+    
                 return
             }
             

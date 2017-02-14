@@ -15,14 +15,15 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
     }
     
     @IBAction func logoutPressed() {
-        
-        DispatchQueue.main.async {
-            let controller = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
-            self.present(controller, animated: true, completion: nil)
-        }
         
         udacClient.udacityLogoutRequest { (result, error) in
             
@@ -34,6 +35,9 @@ class TabBarViewController: UITabBarController {
         
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
+        
+        dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func placeUserLocation(_ sender: UIBarButtonItem) {
@@ -43,7 +47,13 @@ class TabBarViewController: UITabBarController {
     
     @IBAction func refreshUsersData(_ sender: UIBarButtonItem) {
         
-        LoginViewController.sharedInstance().populateData { (result, error) in
+        populateData { (result, error) in
+            
+            guard error == nil else{
+                self.displayError(title: "Error Refreshing Data", message: (error?.localizedDescription)!)
+                return
+            }
+            
             DispatchQueue.main.async {
                 let mapVC = self.viewControllers?[0] as? MapViewController
                 mapVC?.updateMapLocations()
@@ -52,6 +62,26 @@ class TabBarViewController: UITabBarController {
             }
         }
         
+    }
+    
+    func populateData(completionHandler: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void){
+        
+        ParseClient.sharedInstance().getStudentLocations(limit: 100) { (result, error) in
+            
+            DispatchQueue.main.async {
+                
+                guard (result != nil) || (error == nil) else {
+                    completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo:  [NSLocalizedDescriptionKey:"It appears you are not connected to the internet."]))
+                    self.displayError(title: "Retrieving Data", message: "Could not retrieve student locations from Parse. Try again later.")
+                    self.sendError(message: "Populating student data returned nil. Error:\(error)")
+                    return
+                }
+                
+                DataModelObject.sharedInstance().studArray = StudentInformation.convertStudentData(array: result!)
+                completionHandler(nil, nil)
+                
+            }
+        }
     }
     
     //MARK: Shared Instance

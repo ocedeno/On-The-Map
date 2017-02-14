@@ -28,6 +28,7 @@ class ParseClient {
             
             //GUARD: Handling Error Return
             guard (error == nil) else {
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey: "There was an error with the request. Please try again later."]))
                 self.sendError("***There was an error with your request: \(error!)")
                 return
             }
@@ -35,12 +36,14 @@ class ParseClient {
             // GUARD: Response Error Check (Login Verified)
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
                 
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey: "Your request returned an unsuccessful status cose. Please try again later. "]))
                 self.sendError("***Your request returned a status code other than 2xx! \(response!)")
                 return
             }
             
             // GUARD: Data Error Check
             guard let data = data else {
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo: [NSLocalizedDescriptionKey: "It appears you are not online. Please connect to the internet, and try again."]))
                 self.sendError("***No data was returned by the request!")
                 return
             }

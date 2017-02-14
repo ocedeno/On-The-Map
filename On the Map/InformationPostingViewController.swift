@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class InformationPostingViewController: UIViewController, UITextFieldDelegate {
+class InformationPostingViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
     
     
     //MARK: IBOutlets
@@ -23,14 +23,14 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userCurrentLocation: UITextField!
     @IBOutlet weak var userMediaURL: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var mapClient = MapClient()
+    let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        mapView.delegate = self
         userCurrentLocation.delegate = self
         userMediaURL.delegate = self
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector (InformationPostingViewController.dismissKeyboard)))
@@ -48,6 +48,24 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func showActivityIndicatory(uiView: UIView) {
+        actInd.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        actInd.center = uiView.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.whiteLarge
+        uiView.addSubview(actInd)
+        actInd.startAnimating()
+    }
+    
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        
+        if fullyRendered {
+            actInd.stopAnimating()
+        }
+        
+    }
+    
     //MARK: IBActions
     
     @IBAction func actionButton(_ sender: UIButton) {
@@ -60,34 +78,41 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         
         if actionButton.titleLabel?.text == " Find on the Map " {
             
-            activityIndicator.startAnimating()
+            showActivityIndicatory(uiView: self.view)
             mapViewSettings(location: userCurrentLocation.text!, mapView: mapView)
             
-        } else {
+        }else {
             
             guard (userMediaURL?.text != "") else {
                 self.displayError(title: "Error", message: "Please add a Media URL")
                 return
             }
             
-            submitUserLocation(mediaURL: userMediaURL.text!)
-            let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
+            TabBarViewController.sharedInstance().populateData(completionHandler: { (result, error) in
                 
-                LoginViewController.sharedInstance().populateData(completionHandler: { (result, error) in
+                guard error == nil else {
                     
                     DispatchQueue.main.async {
-                        self.cancelAction()
-                        MapViewController.sharedInstance().updateMapLocations()
-                        self.mapClient.centralizeLocations(lat: DataModelObject.sharedInstance().currentUserLat, lon: DataModelObject.sharedInstance().currentUserLon, mapView: DataModelObject.sharedInstance().universalMapView)
+                        
+                        self.displayError(title: "Error: Submitting Location.", message: (error?.localizedDescription)!)
+                        print("***Populate Data Error***")
                     }
-                })
+                    
+                    return
+                }
                 
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.cancelAction()
+                    self.submitUserLocation(mediaURL: self.userMediaURL.text!)
+                    MapViewController.sharedInstance().updateMapLocations()
+                    self.mapClient.centralizeLocations(lat: DataModelObject.sharedInstance().currentUserLat, lon: DataModelObject.sharedInstance().currentUserLon, mapView: DataModelObject.sharedInstance().universalMapView)
+                    let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
         }
-        
     }
     
     //MARK: Method for Resetting Views
@@ -115,7 +140,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         mapClient.forwardGeocoding(address: location,
                                    mapView: mapView,
                                    viewController: self)
-        activityIndicator.stopAnimating()
+        
     }
     
     //MARK: Method for Submitting User Location
