@@ -95,7 +95,6 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate, M
                     DispatchQueue.main.async {
                         
                         self.displayError(title: "Error: Submitting Location.", message: (error?.localizedDescription)!)
-                        print("***Populate Data Error***")
                     }
                     
                     return
