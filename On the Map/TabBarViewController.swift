@@ -19,8 +19,6 @@ class TabBarViewController: UITabBarController {
     
     @IBAction func logoutPressed() {
         
-        dismiss(animated: true, completion: nil)
-        
         udacClient.udacityLogoutRequest { (result, error) in
             
             guard (error == nil) else {
@@ -31,6 +29,9 @@ class TabBarViewController: UITabBarController {
         
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
+        
+        dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func placeUserLocation(_ sender: UIBarButtonItem) {
