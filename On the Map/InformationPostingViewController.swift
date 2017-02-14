@@ -55,13 +55,17 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate, M
         actInd.activityIndicatorViewStyle =
             UIActivityIndicatorViewStyle.whiteLarge
         uiView.addSubview(actInd)
-        actInd.startAnimating()
+        DispatchQueue.main.async {
+            self.actInd.startAnimating()
+        }
     }
     
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         
         if fullyRendered {
-            actInd.stopAnimating()
+            DispatchQueue.main.async {
+                self.actInd.stopAnimating()
+            }
         }
         
     }
@@ -93,23 +97,26 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate, M
                 guard error == nil else {
                     
                     DispatchQueue.main.async {
-                        
                         self.displayError(title: "Error: Submitting Location.", message: (error?.localizedDescription)!)
                     }
                     
                     return
                 }
                 
+                let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                
                 DispatchQueue.main.async {
+                    
                     self.cancelAction()
                     self.submitUserLocation(mediaURL: self.userMediaURL.text!)
                     MapViewController.sharedInstance().updateMapLocations()
                     self.mapClient.centralizeLocations(lat: DataModelObject.sharedInstance().currentUserLat, lon: DataModelObject.sharedInstance().currentUserLon, mapView: DataModelObject.sharedInstance().universalMapView)
-                    let alert = UIAlertController(title: "Success", message: "Your points on the map! Go check it out!", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (alert) in
-                    }))
                     self.present(alert, animated: true, completion: nil)
                 }
+                
             })
         }
     }

@@ -30,7 +30,7 @@ class UdacityClient: NSObject {
             //GUARD: Handling Error Return
             guard (error == nil) else {
                 
-                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo:  [NSLocalizedDescriptionKey:"There was an error with your request: \(error!)"]))
+                completionHandler(nil, NSError(domain: "On the Map", code: 0, userInfo:  [NSLocalizedDescriptionKey:"\(error!.localizedDescription)"]))
                     
                 return
             }
