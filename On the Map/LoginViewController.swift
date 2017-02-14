@@ -22,6 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var userEmailAddress: UITextField!
+    @IBOutlet var actInd: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         
@@ -31,7 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         
         //MARK: Padding TextFields
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.userPassword.frame.height))
-        
+        actInd.hidesWhenStopped = true
         userEmailAddress.leftView = paddingView
         userPassword.leftView = paddingView
         userEmailAddress.leftViewMode = UITextFieldViewMode.whileEditing
@@ -48,6 +49,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         TabBarViewController.sharedInstance().populateData { (result, error) in
             
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        actInd.stopAnimating()
+    }
+    
+    func showActivityIndicatory(uiView: UIView) {
+        actInd.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        actInd.center = uiView.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.whiteLarge
+        uiView.addSubview(actInd)
+        actInd.startAnimating()
     }
     
     func getFBData(){
@@ -79,7 +96,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             sendError(message: error.localizedDescription)
             return
         }
-        
+        showActivityIndicatory(uiView: self.view)
         navigateToViewController(viewcontroller: mainNavController)
         getFBData()
     }
@@ -103,12 +120,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         
         //MARK: Run Udacity Authentication
         
+        showActivityIndicatory(uiView: self.view)
+        
         UdacityClient.sharedInstance().udacityAuthenticationRequest(username: userEmailAddress.text!, password: userPassword.text!) { (result, error) in
             
             guard (result != nil), (error == nil) else {
                 self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
                 self.displayError(title: "Udacity Login Issue", message: (error?.localizedDescription)!)
-                
+                self.actInd.stopAnimating()
                 return
             }
             
@@ -121,6 +140,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                     DispatchQueue.main.async {
                         self.sendError(message: "There was an error authroizing Udacity. Error: \(error)")
                         self.displayError(title: "Udacity Login Issue", message: (error?.localizedDescription)!)
+                        self.actInd.stopAnimating()
                     }
                     return
                 }
@@ -129,7 +149,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 DataModelObject.sharedInstance().userInfo = userData
                 
             })
-            
+            self.actInd.stopAnimating()
+            self.actInd.hidesWhenStopped = true
             self.navigateToViewController(viewcontroller: self.mainNavController)
         }
     }
