@@ -58,6 +58,7 @@ class MapClient {
                 viewController.displayError(title: "Incorrect Location", message: "There was an issue with the address you provided. Please check and try again.")
                 let controller = viewController as! InformationPostingViewController
                 controller.initialViewSettings()
+                controller.actInd.stopAnimating()
                 return
             }
             
